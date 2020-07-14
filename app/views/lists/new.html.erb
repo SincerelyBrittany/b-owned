@@ -1,0 +1,5 @@
+<%= form_for @list do |f| %>
+  <%= f.collection_select :username, User.all, :name%>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

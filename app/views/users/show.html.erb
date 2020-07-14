@@ -1,0 +1,17 @@
+
+<h5>Comments count: <%= @user.comments.count %></h5>
+<h5>Favorites count: <%= @user.favorites.count %></h5>
+
+
+<h2><%= @user.username %> </h2> has commented on the following companys:
+ 
+<% @user.companies.each do |company| %>
+  <%= link_to company.title, company_path(company) %>
+<% end %>
+
+<h2><%= @user.username %> </h2> has liked on the following companys:
+<% @user.favorites.each do |favorite| %>
+  <%= link_to favorite.company, company_path(favorite.company) %>
+<% end %>
+
+

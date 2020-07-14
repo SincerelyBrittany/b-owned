@@ -1,0 +1,24 @@
+<h2>Company NAME: <%= @company.title %></h2>
+<p>
+  Content: <%= @company.description %>
+</p>
+
+
+<h5>Comments count: <%= @company.comments.count %></h5>
+<h5>Favorites count: <%= @company.favorites.count %></h5>
+
+Comments:
+  <% @company.comments.each do |comment| %>
+  <br>
+    <%= link_to comment.user.username, user_path(comment.user) %> said
+    <%= comment.content %>
+  <% end %>
+
+<br><br>
+Favorited:
+  <% @company.favorites.each do |favorite| %>
+  <br>
+    <%= link_to favorite.user.username, user_path(favorite.user) %> loved
+     ❤️
+  <% end %>
+
