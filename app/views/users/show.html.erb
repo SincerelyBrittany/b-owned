@@ -9,9 +9,14 @@
   <%= link_to company.title, company_path(company) %>
 <% end %>
 
-<h2><%= @user.username %> </h2> has liked on the following companys:
-<% @user.favorites.each do |favorite| %>
-  <%= link_to favorite.company, company_path(favorite.company) %>
-<% end %>
+
+<br><br>
+Favorited:
+  <% @user.favorites.each do |favorite| %>
+  <br>
+    <%= link_to favorite.company.title, company_path(favorite.company) %> loved
+     ❤️
+  <% end %>
+
 
 
