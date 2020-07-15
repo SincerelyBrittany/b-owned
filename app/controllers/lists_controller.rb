@@ -18,7 +18,7 @@ class ListsController < ApplicationController
         # user_id: params[:list][:user],
         # name: params[:list][:name]
         # })
-        @list = List.new(list_params)
+        @list = List.create(list_params)
 	#   @list = List.new(params.require(:list).permit(:title))
     if @list.save
       redirect_to list_path(@list)
