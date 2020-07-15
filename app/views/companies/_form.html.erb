@@ -1,3 +1,4 @@
+<% if false %>
 <%= form_for(@list) do |f| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
@@ -18,4 +19,21 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
+<% end %>
+
+<h1>New List</h1>
+
+<%= form_for @company do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :name %>
+  <br/>
+  <br/>
+  <%= f.collection_check_boxes :company_list_ids, Company.all, :id, :title %>
+  <br/>
+  <br/>
+
+  <br/>
+  <br/>
+  <%= f.submit %>
 <% end %>

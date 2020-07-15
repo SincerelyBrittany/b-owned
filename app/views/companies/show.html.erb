@@ -1,4 +1,5 @@
 <h2>Company NAME: <%= @company.title %></h2>
+
 <p>
   Content: <%= @company.description %>
 </p>
@@ -21,4 +22,8 @@ Favorited:
     <%= link_to favorite.user.username, user_path(favorite.user) %> loved
      ❤️
   <% end %>
+
+ 
+
+
 

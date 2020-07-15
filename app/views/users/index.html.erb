@@ -1,0 +1,8 @@
+<p>This is user index -- should show all users</p>
+
+
+<ul>
+<% @users.each do |user| %>
+  <li><%= link_to user.username, user %></li>
+<% end %>
+</ul>

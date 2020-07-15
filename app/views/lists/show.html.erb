@@ -1,0 +1,9 @@
+<h1><%= @list.name %></h1>
+<p>This is list show-- should show contents within a particular lists</p>
+
+<ul>
+<% @list.companies.each do |company| %>
+    <li><%= link_to company.title, company %></li>
+<% end %>
+</ul>
+

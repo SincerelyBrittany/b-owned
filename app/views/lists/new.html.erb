@@ -1,5 +1,79 @@
+<% if false %>
 <%= form_for @list do |f| %>
   <%= f.collection_select :username, User.all, :name%>
   <%= f.text_field :name %>
   <%= f.submit %>
+<% end %>
+
+
+<%= render 'form' %>
+
+
+<%= form_for(@list) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.collection_select :company, Company.all, :id, :title %>
+  <%= f.submit %>
+<% end %>
+
+
+<h1>New Post</h1>
+
+<%= form_for @list do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :name %>
+  <br/>
+  <br/>
+  <%= f.collection_check_boxes :company_list_ids, Company.all, :id, :title %>
+  <br/>
+  <br/>
+  <%= f.fields_for :companies, list.companies.build do |company_fields| %>
+    <%= categories_fields.label :title, "name" %>
+    <%= categories_fields.text_field :title %>
+  <% end %>
+  <br/>
+  <br/>
+  <%= f.submit %>
+<% end %>
+
+<%= render 'form', list: List.new %>
+
+
+
+
+<%= form_for @list do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :name %>
+  <br/>
+  <br/>
+  <%= f.collection_check_boxes :company_list_ids, Company.all, :id, :title %>
+  <br/>
+  <br/>
+
+  <br/>
+  <br/>
+  <%= f.submit %>
+<% end %>
+<% end %>
+
+
+
+<%= form_for(@list) do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

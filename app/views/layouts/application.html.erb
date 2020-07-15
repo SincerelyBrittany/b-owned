@@ -4,12 +4,19 @@
     <title>BlackOwned</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+   
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+   <nav class="nav">
+   <%= link_to "companies", companies_path %>
+   <%= link_to "users", users_path %>
+   <%= link_to "lists", lists_path %>
+    <%= link_to "lists", lists_path %>
+  </nav>
+  
     <%= yield %>
   </body>
 </html>

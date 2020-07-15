@@ -3,6 +3,8 @@ class List < ApplicationRecord
      #list = List.create
      #list.errors.full_messages
     belongs_to :user
+    has_many :company_lists
+    has_many :companies, through: :company_lists
     def user_name=(name)
         self.user = User.find_or_create_by(name: name)
       end

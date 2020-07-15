@@ -1,9 +1,11 @@
 class ListsController < ApplicationController
+    
     def index
 		@lists = List.all
 	end
 
-	def show
+    def show
+        # byebug
 		@list = List.find(params[:id])
 	end
 
@@ -12,21 +14,22 @@ class ListsController < ApplicationController
 	end
 
     def create
-        List.create({
-        user_name: params[:list][:user_name],
-        name: params[:list][:name]
-        })
+        # @list = List.create({
+        # user_id: params[:list][:user],
+        # name: params[:list][:name]
+        # })
+        @list = List.new(list_params)
 	#   @list = List.new(params.require(:list).permit(:title))
-    # if @list.save
+    if @list.save
       redirect_to list_path(@list)
-    # else
-    #   render :new
-    # end
+    else
+      render :new
+    end
 	end
 
 	def update
 	  @list = List.find(params[:id])
-	  @list.update(params.require(:list).permit(:title, :description, :user_id))
+	  @list.update(params.require(:list).permit(:name))
 	  redirect_to list_path(@list)
 	end
 
@@ -38,7 +41,7 @@ class ListsController < ApplicationController
  
     def list_params
       #params.require(:list).permit(:name, user_ids: [])
-      params.require(:list).permit(:user_name, :name)
+      params.require(:list).permit(:user, :name)
     end
 
 end

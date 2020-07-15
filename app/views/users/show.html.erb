@@ -18,5 +18,12 @@ Favorited:
      ❤️
   <% end %>
 
+  <br><br>
+<h5><%= @user.username %> lists: </h5>
+  <% @user.lists.each do |list| %>
+  <br>
+    <%= link_to list.name, list_path(list.id) %>
+  <% end %>
+
 
 
