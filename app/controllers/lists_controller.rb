@@ -12,8 +12,10 @@ class ListsController < ApplicationController
 	end
 
     def create
-        @list = List.create({name: params[:list][:name], user_id: 1}) #must set up current user and list params properly
-    if @list.save
+        # byebug
+        #@list = List.create({name: params[:list][:name], user_id: 1}) #must set up current user and list params properly
+        @list = List.create(list_params)
+        if @list.save
       redirect_to list_path(@list)
     else
       render :new
@@ -40,7 +42,7 @@ class ListsController < ApplicationController
  
     def list_params
       #params.require(:list).permit(:name, user_ids: [])
-      params.require(:list).permit(:name)
+      params.require(:list).permit(:name, :user_id)
     end
 
 end
