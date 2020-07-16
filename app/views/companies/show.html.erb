@@ -30,6 +30,10 @@ Favorited:
   <% end %>
 
  
-
+<%= form_for @company do |f| %>
+  <%= f.collection_select :list_ids , List.all, :id, :name %>
+  <%= f.hidden_field :company_id, :value => @company.id %>
+  <%= f.submit %>
+<% end %>
 
 
