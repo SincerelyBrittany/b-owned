@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :companies, through: :comments
     has_many :favorites
     has_many :lists
-    accepts_nested_attributes_for :lists
+    #accepts_nested_attributes_for :lists
     def comment_count
         self.comments.size
     end
