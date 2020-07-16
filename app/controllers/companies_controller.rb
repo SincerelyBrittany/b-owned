@@ -16,9 +16,9 @@ class CompaniesController < ApplicationController
     end
   
       def create
-          byebug
+      
           #@company = company.create({name: params[:company][:name], user_id: 1}) #must set up current user and company params properly
-          @company = company.create(company_params)
+          @company = Company.create(company_params)
           if @company.save
         redirect_to company_path(@company)
       else
@@ -29,7 +29,7 @@ class CompaniesController < ApplicationController
     def update
       @company = Company.find(params[:id])
       @list = params[:company][:list_ids]
-      @company.update(company_params)
+      @company.update(company_params_with_list)
       redirect_to list_path(@list)
     end
   
@@ -42,8 +42,11 @@ class CompaniesController < ApplicationController
           @company.destroy
           redirect_to companys_url
         end
-      
-        def company_params
+  private  
+      def company_params
+        params.require(:company).permit(:title, :description)
+      end
+        def company_params_with_list
           params.require(:company).permit(:list_ids)
         end
 
