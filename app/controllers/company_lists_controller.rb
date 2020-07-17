@@ -27,9 +27,9 @@ class CompanyListsController < ApplicationController
 	#   byebug
     # end
 
-    # def destroy
-    #     byebug
-    #   end
+    def destroy
+        byebug
+      end
 
     private
 
