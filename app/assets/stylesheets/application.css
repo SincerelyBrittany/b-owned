@@ -15,6 +15,13 @@
  */
 
 
+body {
+  background-color: tan;
+}
+
+p{
+  font-family: monospace; 
+}
 
 h1 {
   color: lightblue; 

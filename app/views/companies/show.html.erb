@@ -3,17 +3,18 @@
 <p> Goals for this page is to allow a user to add the company to a list they have </p>
 <p> Goals for this page is to see the location based off Google Maps api </p>
 
+<%# Displays company title %>
+<h1>Company NAME: <%= @company.title %></h1>
 
-<h2>Company NAME: <%= @company.title %></h2>
+<%# Displays company description %>
+<p>Content: <%= @company.description %></p>
 
-<p>
-  Content: <%= @company.description %>
-</p>
-
-
+<%# Displays company comment count %>
 <h5>Comments count: <%= @company.comments.count %></h5>
+<%# Displays company favorite count %>
 <h5>Favorites count: <%= @company.favorites.count %></h5>
 
+<%# Displays comments from user %>
 Comments:
   <% @company.comments.each do |comment| %>
   <br>
@@ -21,14 +22,16 @@ Comments:
     <%= comment.content %>
   <% end %>
 
+
 <br><br>
-Favorited:
+Favorited/followed by:
   <% @company.favorites.each do |favorite| %>
   <br>
     <%= link_to favorite.user.username, user_path(favorite.user) %> loved
      ❤️
   <% end %>
 
+<%# commented out  %>
  <%if false %>
 <%= form_for @company do |f| %>
   <%= f.collection_select :list_ids , List.all, :id, :name %>
@@ -36,9 +39,6 @@ Favorited:
   <%= f.submit %>
 <% end %>
 
-
-
- 
 <%= form_for @company do |f| %>
   <%= f.collection_select :list_ids , List.all, :id, :name %>
   <%= f.submit %>
@@ -46,13 +46,17 @@ Favorited:
 
  <%end %>
 
+<%# Adds a company to list %>
+<br><br>
+ Add to list:
 <%= form_for CompanyList.new do |f| %>
   <%= f.collection_select :list_id , List.all, :id, :name %>
   <%= f.hidden_field :company_id, value: @company.id %>
   <%= f.submit "Add to your list" %>
 <% end %>
 
-
+<%# Shows commentors username but not the content %>
+<br><br>
 Commentors:
 <ul>
 <% @company.users.distinct.each do |user| %>
@@ -62,6 +66,9 @@ Commentors:
 <% end %>
 </ul>
 
+
+<br><br>
+<p> add a comment </p>
 <%= form_for @company.comments.build do |f| %>
   <%= f.hidden_field :company_id %>
   <p>
@@ -76,3 +83,16 @@ Commentors:
 <% end %>
 
 
+
+<%#working on favorites%>
+<%#u2.favorites.create(:liked => true, :company_id => 1)%>
+
+<br><br>
+ favorite this company:
+<%= form_for Favorite.new do |f| %>
+  <%# f.collection_select :favorite_id , Favorite.all, :id, :liked %>
+  <%# f.hidden_field :user_id, value: user.id %>
+  <%=f.hidden_field :user_id, value: 7 %>
+  <%=f.hidden_field :company_id, value: @company.id %>
+  <%= f.submit "Favorite this company" %>
+<% end %>
