@@ -1,21 +1,20 @@
 <% if false %>
+<%# first try %>
 <%= form_for @list do |f| %>
   <%= f.collection_select :username, User.all, :name%>
   <%= f.text_field :name %>
   <%= f.submit %>
 <% end %>
 
-
+<%# first try %>
 <%= render 'form' %>
-
-
+<%# first try %>
 <%= form_for(@list) do |f| %>
   <%= f.text_field :name %>
   <%= f.collection_select :company, Company.all, :id, :title %>
   <%= f.submit %>
 <% end %>
-
-
+<%# first try %>
 <h1>New Post</h1>
 
 <%= form_for @list do |f| %>
@@ -34,12 +33,12 @@
   <br/>
   <%= f.submit %>
 <% end %>
-
+<%# first try %>
 <%= render 'form', list: List.new %>
 
 
 
-
+<%# first try %>
 <%= form_for @list do |f| %>
   <%= f.label "Title" %>
   <%= f.text_field :name %>
@@ -56,7 +55,7 @@
 <% end %>
 
 
-
+<%# Real page %>
 <%= form_for(@list) do |f| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
