@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :company
-    def user_name
-        self.user.name
+    def comment_count
+        self.comments.size
     end
 end
