@@ -1,35 +1,40 @@
 class CompanyListsController < ApplicationController
-    def index
-        byebug
+    # def index
+    #     byebug
 		
-	end
+	# end
 
-    def show
-        byebug
+    # def show
+    #     byebug
 		
-	end
+	# end
 
-    def new
-        @companylist = CompanyList.new
-        byebug
+    # def new
+    #     byebug
         
-	end
+	# end
 
     def create
-        byebug
-    
+       @companylist = CompanyList.create(strong_params)
+       redirect_to @companylist.list
 	end
 
-	def update
-	  byebug
-	end
+	# def update
+	#   byebug
+	# end
 
-	def edit
-	  byebug
+	# def edit
+	#   byebug
+    # end
+
+    # def destroy
+    #     byebug
+    #   end
+
+    private
+
+    def strong_params
+        params.require(:company_list).permit(:list_id, :company_id)
     end
-
-    def destroy
-        byebug
-      end
     
 end
