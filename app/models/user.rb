@@ -4,9 +4,9 @@ class User < ApplicationRecord
     has_many :favorites
     has_many :lists
     #accepts_nested_attributes_for :lists
-    def user_name
-        self.user.name
-    end
+    # def user_name
+    #     self.user.name
+    # end
 
     def user_name=(name)
         self.user = User.find_or_create_by(name: name)
