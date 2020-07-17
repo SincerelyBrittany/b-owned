@@ -12,6 +12,21 @@ class Company < ApplicationRecord
     #     end
     #   end
 
+    def self.search(search)
+        if search
+            company = Company.find_by(title: search)
+            if company
+                self.where(id: company)
+            else 
+                Company.all
+            end
+        else
+            Company.all
+        end
+    end
+
+
+
     def comment_count
         self.comments.size
     end

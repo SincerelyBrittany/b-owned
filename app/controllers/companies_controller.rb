@@ -1,7 +1,15 @@
 class CompaniesController < ApplicationController
  # before_action :set_company, only: [:show]
+    # def index
+    #   @companies = Company.all
+    # end
+
     def index
-      @companies = Company.all
+      if params[:search]
+        @companies = Company.search(params[:search])
+      else
+        @companies = Company.all
+      end
     end
   
     def show
