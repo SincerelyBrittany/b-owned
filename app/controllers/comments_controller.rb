@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    #params.require(:comment).permit(:content, :company_id, :user_id, user_attributes:[:username])
-   params.require(:comment).permit(:content, :company_id, :user_id)
+    params.require(:comment).permit(:content, :company_id, :user_id, user_attributes:[:username])
+   #params.require(:comment).permit(:content, :company_id, :user_id)
   
   end
 end
