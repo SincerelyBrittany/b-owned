@@ -11,6 +11,14 @@
 <% end %>
 
 
+<%= form_tag companies_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+
 
 <ul>
 <% @companies.each do |company| %>

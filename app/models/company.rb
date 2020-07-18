@@ -5,6 +5,11 @@ class Company < ApplicationRecord
     has_many :company_lists
     has_many :lists, through: :company_lists
 
+    def favorite_count
+        self.favorites.size
+    end
+
+
     # def company_attributes=(company_attributes)
     #     company_attributes.values.each do |company_attribute|
     #       company = Company.find_or_create_by(company_attribute)
@@ -12,24 +17,26 @@ class Company < ApplicationRecord
     #     end
     #   end
 
-    def self.search(search)
-        if search
-            company = Company.find_by(title: search)
-            if company
-                self.where(id: company)
-            else 
-                Company.all
-            end
+    # def self.search(search)
+    #     if search
+    #         company = Company.find_by(title: search)
+    #         if company
+    #             self.where(id: company)
+    #         else 
+    #             Company.all
+    #         end
+    #     else
+    #         Company.all
+    #     end
+    # end
+    def self.search(query)
+        if query.present?
+          where('TITLE like ?', "%#{query}%")
         else
-            Company.all
+          self.all
         end
-    end
+      end
 
-
-
-    def comment_count
-        self.comments.size
-    end
 
     has_many :favorites
     has_many :users, through: :favorites

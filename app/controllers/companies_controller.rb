@@ -4,9 +4,19 @@ class CompaniesController < ApplicationController
     #   @companies = Company.all
     # end
 
+    # def index
+    #   byebug
+    #   if params[:search]
+    #     @companies = Company.search(params[:search])
+    #   else
+    #     @companies = Company.all
+    #   end
+    # end
+
     def index
-      if params[:search]
-        @companies = Company.search(params[:search])
+      if params[:query]
+        @companies = Company.search(params[:query])
+        render 'index'
       else
         @companies = Company.all
       end
