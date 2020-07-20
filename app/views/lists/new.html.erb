@@ -33,9 +33,6 @@
   <br/>
   <%= f.submit %>
 <% end %>
-<%# first try %>
-<%= render 'form', list: List.new %>
-
 
 
 <%# first try %>
@@ -52,8 +49,6 @@
   <br/>
   <%= f.submit %>
 <% end %>
-<% end %>
-
 
 <%# Real page %>
 <%= form_for(@list) do |f| %>
@@ -77,3 +72,9 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<% end %>
+
+
+<%# first try %>
+<%= render 'form' %>
