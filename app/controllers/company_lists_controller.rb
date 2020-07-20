@@ -19,9 +19,9 @@ class CompanyListsController < ApplicationController
        redirect_to @companylist.list
 	end
 
-	# def update
-	#   byebug
-	# end
+	def update
+	  byebug
+	end
 
 	# def edit
 	#   byebug
