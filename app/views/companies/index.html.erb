@@ -4,12 +4,12 @@
 
 <h1>Search for a company</h1>
 
-
+<% if false %>
 <%= form_tag(companies_path, method: :get) do %>
  <%= text_field_tag(:search, params[:search]) %>
   <%= submit_tag 'Search' %>
 <% end %>
-
+<% end %>
 
 <%= form_tag companies_path, method: :get do %>
   <p>
