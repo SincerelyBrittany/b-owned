@@ -18,19 +18,10 @@
 
 
 body {
-  background-color: lightgrey;
+  background-color:white;
   /* background-image: url("https://jooinn.com/images/black-leather-2.jpg"); */
   
 }
-
-p{
-  font-family: monospace; 
-}
-
-h1 {
-  color: black; 
-}
-
 
 
 .grid-container {
@@ -41,7 +32,7 @@ h1 {
 
   padding-right: 10px; /* 3 */
   padding-left:  10px; /* 3 */
-  text-align: center;
+  
 }
 
 
@@ -78,7 +69,7 @@ ul {
 
 
 /* Basic styling */
-* {
+/* * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -86,9 +77,13 @@ ul {
 body {
   font-family: sans-serif;
   font-size: 16px;
-}
+} */
+
+
+
+
 nav {
-  background: grey;
+  background:brown;
   padding: 0 15px;
 }
 a {
