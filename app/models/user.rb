@@ -16,5 +16,8 @@ class User < ApplicationRecord
          self.user ? self.user.name : nil
     end
    
+    def comment_count
+      self.comments.size
+    end
     # has_many :companies, through: :comments
 end
