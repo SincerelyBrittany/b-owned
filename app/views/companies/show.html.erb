@@ -3,33 +3,28 @@
 <p> Goals for this page is to allow a user to add the company to a list they have </p>
 <p> Goals for this page is to see the location based off Google Maps api </p>
 
+<div class="company_show">
 <%# Displays company title %>
 <h1>Company NAME: <%= @company.title %></h1>
 
 <%# Displays company description %>
-<p>Content: <%= @company.description %></p>
+<h2>Content: <%= @company.description %></h2>
 
 <%# Displays company comment count %>
-<h5>Comments count: <%= @company.comments.count %></h5>
+<h3>Comments count: <%= @company.comments.count %></h3>
 <%# Displays company favorite count %>
-<h5>Favorites count: <%= @company.favorites.count %></h5>
+<h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
 
 <%# Displays comments from user %>
-Comments:
+<h4> Comments: </h4>
   <% @company.comments.each do |comment| %>
   <br>
-    <%= link_to comment.user.username, user_path(comment.user) %> said
-    <%= comment.content %>
+  <p>  <%= link_to comment.user.username, user_path(comment.user) %> said
+    <%= comment.content %> </p>
   <% end %>
 
 
 <br><br>
-Favorited/followed by:
-  <% @company.favorites.each do |favorite| %>
-  <br>
-    <%= link_to favorite.user.username, user_path(favorite.user) %> loved
-     ❤️
-  <% end %>
 
 <%# commented out  %>
  <%if false %>
@@ -46,7 +41,7 @@ Favorited/followed by:
 
  <%end %>
 
-<%# Adds a company to list %>
+<%# Adds a company to list -- may have to update/refactor %>
 <br><br>
  Add to list:
 <%= form_for CompanyList.new do |f| %>
@@ -54,9 +49,10 @@ Favorited/followed by:
   <%= f.hidden_field :company_id, value: @company.id %>
   <%= f.submit "Add to your list" %>
 <% end %>
+<br><br>
 
 <%# Shows commentors username but not the content %>
-<br><br>
+<% if false %>
 Commentors:
 <ul>
 <% @company.users.distinct.each do |user| %>
@@ -65,7 +61,7 @@ Commentors:
   </li>
 <% end %>
 </ul>
-
+<% end %>
 
 <br><br>
 <p> add a comment </p>
@@ -92,7 +88,16 @@ Commentors:
 <%= form_for Favorite.new do |f| %>
   <%# f.collection_select :favorite_id , Favorite.all, :id, :liked %>
   <%# f.hidden_field :user_id, value: user.id %>
-  <%=f.hidden_field :user_id, value: 7 %>
+  <%=f.hidden_field :user_id, value: 8 %>
+  <%=f.hidden_field :liked, value: false %>
   <%=f.hidden_field :company_id, value: @company.id %>
   <%= f.submit "Favorite this company" %>
 <% end %>
+
+<%# <%= button_to "New", action: Favorite.new %>
+
+<%# <%= button_to "Follow this company", { action: Favorite.new, company_id: @company.id }, %> 
+
+<br><br>
+
+</div>

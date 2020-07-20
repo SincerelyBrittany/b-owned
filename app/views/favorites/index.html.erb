@@ -1,0 +1,7 @@
+Favorited/followed by:
+  <% @company.favorites.each do |favorite| %>
+  <br>
+    <%= link_to favorite.user.username, user_path(favorite.user) %> loved
+     ❤️ <%= favorite.company.title %>
+  <% end %>
+
