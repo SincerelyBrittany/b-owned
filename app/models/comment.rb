@@ -7,4 +7,9 @@ class Comment < ApplicationRecord
     def user_attributes=(user_attributes)
         self.user = User.find_or_create_by(username: user_attributes[:username]) unless user_attributes[:username].blank?
     end
+
+    def last_updated
+        updated_at.strftime("Last updated %A, %b %e, at %l:%M %p")
+    end
+
 end
