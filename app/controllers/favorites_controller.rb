@@ -1,17 +1,20 @@
 class FavoritesController < ApplicationController
     def create
         @favorite = Favorite.new(fav_params)
-        # if Favorite.where(user_id: @favorite.user_id, company_id: @favorite.company_id)
-            #see if liked is true 
-            #if liked is true then redirect to company page with message saying you already follow/favorited
-        #else 
-         #if liked is false then save favorite and redirect to user page showing follow.    
+
         if @favorite.save
             redirect_to @favorite.user
-        else
+        else 
+            
+            @fav = Favorite.find_by(user_id: @favorite.user_id, company_id: @favorite.company_id)
+            @fav.destroy
             redirect_to @favorite.company
         end
     end
+
+    def new
+        @favorite = Favorite.new
+    end 
     
     def index
         # byebug
@@ -19,7 +22,9 @@ class FavoritesController < ApplicationController
         #raise params.inspect
     end 
 
+   
+
     def fav_params
-        params.require(:favorite).permit(:user_id, :company_id, :liked)
+        params.require(:favorite).permit(:user_id, :company_id)
     end
 end
