@@ -10,37 +10,34 @@
   </head>
 
   <body>
-   <p class="none">
-   <%= link_to "Companies", companies_path %>
-   <%= link_to "users", users_path %>
-   <%= link_to "lists", lists_path %>
-   <%= link_to "Create a list", new_list_path %>
-   <%= link_to "Create a User", new_user_path %>
-   <%= link_to "Create a Company", new_company_path %>
-  </p>
+   <%# <p class="none"> %>
+   <%# <%= link_to "Companies", companies_path %>
+   <%# <%= link_to "users", users_path %>
+   <%# <%= link_to "lists", lists_path %>
+   <%# <%= link_to "Create a list", new_list_path %> 
+   <%# <%= link_to "Create a User", new_user_path %> 
+   <%# <%= link_to "Create a Company", new_company_path %> 
+  <%# </p> %>
 
   <nav>
   <ul class="menu">
     <li class="logo"><a href="#">Black Owned</a></li>
-    <li class="item"><a href="#">Home</a></li>
+    <%# <li class="item"><a href="#">Home</a></li> %>
     <li class="item"><%= link_to "All Companies", companies_path %></a></li>
     <li class="item"><%= link_to "Create a Company", new_company_path %></a></li>
     <li class="item"><%= link_to "Create a list", new_list_path %></a></li>
     <li class="item"><%= link_to "All lists", lists_path %></a></li>
-    <li class="item"><%= link_to "Create a User", users_path %></li>
+    <li class="item"><%= link_to "Create a User", new_user_path %></li>
     <li class="item"><%= link_to "All users", users_path %></a></li>
-    <li class="item has-submenu">
-      <a tabindex="0">Companies</a>
-      <ul class="submenu">
-        <li class="subitem"><%= link_to "Companies", companies_path %></li>
-        <li class="subitem"><%= link_to "Companies", companies_path %></a></li>
-        <li class="subitem"><%= link_to "Companies", companies_path %></a></li>
-        <li class="subitem"><a href="#">Copywriting</a></li>
-      </ul>
-    </li>
-    <li class="item"><a href="#">Blog</a></li>
-    <li class="item"><a href="#">Contact</a>
-    </li>
+    <%# <li class="item has-submenu"> %>
+      <%# <a tabindex="0">Companies</a> %>
+      <%# <ul class="submenu"> %>
+        <%# <li class="subitem"><a href="#">Copywriting</a></li> %>
+      <%# </ul> %>
+    <%# </li> %>
+    <%# <li class="item"><a href="#">Blog</a></li>
+    <li class="item"><a href="#">Contact</a> %>
+    <%# </li> %>
     <%# <li class="item button"><a href="#">Log In</a></li>
     <li class="item button secondary"><a href="#">Sign Up</a></li> %>
     <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
