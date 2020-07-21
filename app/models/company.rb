@@ -19,25 +19,13 @@ class Company < ApplicationRecord
         end 
       end 
 
-    # def self.search(search)
-    #     if search
-    #         company = Company.find_by(title: search)
-    #         if company
-    #             self.where(id: company)
-    #         else 
-    #             Company.all
-    #         end
-    #     else
-    #         Company.all
-    #     end
-    # end
     def self.search(query)
         if query.present?
           where('TITLE like ?', "%#{query}%")
         else
           self.all
         end
-      end
+    end
 
 
     has_many :favorites
