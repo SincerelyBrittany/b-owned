@@ -1,7 +1,8 @@
-<p> Goals for this page is to allow a user to favoite/follow the page </p>
-<p> Goals for this page is to allow a user to comment on the page </p>
-<p> Goals for this page is to allow a user to add the company to a list they have </p>
-<p> Goals for this page is to see the location based off Google Maps api </p>
+<p> [x] Goals for this page is to allow a user to favoite/follow the page </p>
+<p> [x] Goals for this page is to allow a user to comment on the page </p>
+<p> [ ] USER CAN CRUD THEIR OWN COMMENT </p>
+<p> [x] Goals for this page is to allow a user to add the company to a list they have </p>
+<p> [ ] Goals for this page is to see the location based off Google Maps api </p>
 
 <div class="company_show">
 <%# Displays company title %>
@@ -12,11 +13,17 @@
 
 <%# Displays company comment count %>
 <h3>Comments count: <%= @company.comments.count %></h3> 
+
 <%# Displays company favorite count %>
 <h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
-<%# <h3>Favorites count: <%= link_to @company.like_count, company_favorites_path(@company) %>
 
-<%# Adds a company to list -- may have to update/refactor %>
+<%# Favorite this company%>
+<%= form_for Favorite.new do |f| %>
+  <%=f.hidden_field :user_id, value: 1 %>
+  <%=f.hidden_field :company_id, value: @company.id %>
+  <%= f.submit "Favorite this company" %>
+<% end %>
+
 <br><br>
  <h3> Add to list: </h3>
  <div class="companylist_form">
@@ -40,21 +47,6 @@
 
 
 <br><br>
-
-<%# commented out  %>
- <%if false %>
-<%= form_for @company do |f| %>
-  <%= f.collection_select :list_ids , List.all, :id, :name %>
-  <%= f.hidden_field :company_id, :value => @company.id %>
-  <%= f.submit %>
-<% end %>
-
-<%= form_for @company do |f| %>
-  <%= f.collection_select :list_ids , List.all, :id, :name %>
-  <%= f.submit %>
-<% end %>
-
- <%end %>
 
 
 
@@ -86,25 +78,5 @@ Commentors:
 <% end %>
 
 
-
-<%#working on favorites%>
-<%#u2.favorites.create(:liked => true, :company_id => 1)%>
-
-<br><br>
- favorite this company:
-<%= form_for Favorite.new do |f| %>
-  <%# f.collection_select :favorite_id , Favorite.all, :id, :liked %>
-  <%# f.hidden_field :user_id, value: user.id %>
-  <%=f.hidden_field :user_id, value: 1 %>
-
-  <%=f.hidden_field :company_id, value: @company.id %>
-  <%= f.submit "Favorite this company" %>
-<% end %>
-
-<%# <%= button_to "New", action: Favorite.new %>
-
-<%# <%= button_to "Follow this company", { action: Favorite.new, company_id: @company.id }, %> 
-
 <br><br>
 
-</div>
