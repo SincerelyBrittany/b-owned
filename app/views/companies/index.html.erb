@@ -1,15 +1,8 @@
-<p> Goals for this page is to allow users to see most recent/added companies </p>
-<p> Goals for this page is to allow users to search companies </p>
-<p> Goals for this page is to allow users request to add a company to admin </p>
+<p> [ ] Goals for this page is to allow users to see most recent/added companies </p>
+<p> [x] Goals for this page is to allow users to search companies </p>
+<p> [ ] Goals for this page is to allow users request to add a company to admin </p>
 
 <h1>Search for a company</h1>
-
-<% if false %>
-<%= form_tag(companies_path, method: :get) do %>
- <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag 'Search' %>
-<% end %>
-<% end %>
 
 <%= form_tag companies_path, method: :get do %>
   <p>
