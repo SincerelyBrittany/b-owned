@@ -5,3 +5,24 @@
 /* h1{
     color: red;
 } */
+
+form {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 0;
+  }
+
+.list_name{
+   padding-bottom: 0;
+   margin: 0;
+  }
+
+  .center{
+      text-align: center;
+  }
+
+  .move{
+      padding-left: 15px;
+      display: inline-block;
+      padding-top: 0;
+  }
