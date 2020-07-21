@@ -19,16 +19,11 @@ class CompanyListsController < ApplicationController
        redirect_to @companylist.list
 	end
 
-	def update
-	  byebug
-	end
-
-	# def edit
-	#   byebug
-    # end
-
     def destroy
-        byebug
+        @currentlist = List.find(params[:current_list])
+        @company = CompanyList.find_by(company_id: params[:company_id], list_id: params[:current_list])
+        @company.destroy
+        redirect_to list_path(@currentlist)
       end
 
     private
