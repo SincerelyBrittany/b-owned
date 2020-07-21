@@ -8,12 +8,21 @@ class User < ApplicationRecord
     #     self.user.name
     # end
 
-    def user_name=(name)
-        self.user = User.find_or_create_by(name: name)
-      end
+    # def user_name=(name)
+    #     self.user = User.find_or_create_by(name: name)
+    #   end
     
-    def user_name
-         self.user ? self.user.name : nil
+    # def user_name
+    #      self.user ? self.user.name : nil
+    # end
+
+
+    def company_name
+      self.company.title
+    end
+  
+    def company_name=(title)
+      self.company = Company.find_or_create_by(title: title)
     end
    
     def comment_count

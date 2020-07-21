@@ -16,10 +16,10 @@ class ListsController < ApplicationController
         #@list = List.create({name: params[:list][:name], user_id: 1}) #must set up current user and list params properly
         @list = List.create(list_params)
         if @list.save
-      redirect_to list_path(@list)
-    else
-      render :new
-    end
+           redirect_to list_path(@list)
+        else
+          render :new
+      end
 	end
 
 	def update

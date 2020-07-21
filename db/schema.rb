@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_07_14_223711) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.boolean "liked"
     t.integer "user_id"
     t.integer "company_id"
     t.datetime "created_at", precision: 6, null: false
