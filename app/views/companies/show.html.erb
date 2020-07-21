@@ -18,11 +18,13 @@
 <h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
 
 <%# Favorite this company%>
+<div class="center">
 <%= form_for Favorite.new do |f| %>
   <%=f.hidden_field :user_id, value: 1 %>
   <%=f.hidden_field :company_id, value: @company.id %>
   <%= f.submit "Favorite this company" %>
 <% end %>
+</div>
 
 <br><br>
  <h3> Add to list: </h3>

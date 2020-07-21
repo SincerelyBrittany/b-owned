@@ -1,39 +1,34 @@
 class ListsController < ApplicationController
-    def index
+  before_action :set_list, only: [:show, :destroy, :edit, :update]
+  def index
 		@lists = List.all
 	end
 
-    def show
-		@list = List.find(params[:id])
+  def show
 	end
 
 	def new
 		@list = List.new
-	end
-
-    def create
-        # byebug
-        #@list = List.create({name: params[:list][:name], user_id: 1}) #must set up current user and list params properly
-        @list = List.create(list_params)
-        if @list.save
-           redirect_to list_path(@list)
-        else
+  end
+  
+  def create
+    @list = List.create(list_params)
+       if @list.save
+          redirect_to list_path(@list)
+      else
           render :new
       end
 	end
 
 	def update
-	  @list = List.find(params[:id])
 	  @list.update(params.require(:list).permit(:name))
 	  redirect_to list_path(@list)
 	end
 
 	def edit
-	  @list = List.find(params[:id])
-    end
+  end
 
     def destroy
-        @list = List.find(params[:id])
         @list.destroy
         redirect_to lists_url
       end
@@ -41,8 +36,11 @@ class ListsController < ApplicationController
     private
  
     def list_params
-      #params.require(:list).permit(:name, user_ids: [])
       params.require(:list).permit(:name, :user_id)
+    end
+
+    def set_list
+      @list = List.find(params[:id])
     end
 
 end
