@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+    # belongs_to :company_owner
     has_many :comments
     has_many :users, through: :comments
 

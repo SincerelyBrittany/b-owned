@@ -3,6 +3,7 @@ class CreateCompanies < ActiveRecord::Migration[6.0]
     create_table :companies do |t|
       t.string :title
       t.text :description
+      t.belongs_to :owner
 
       t.timestamps
     end
