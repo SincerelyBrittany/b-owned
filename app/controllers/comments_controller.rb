@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
+    byebug
+    @comment.user = current_user
     redirect_to @comment.company
   end
 
