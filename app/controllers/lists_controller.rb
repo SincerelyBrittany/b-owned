@@ -15,7 +15,6 @@ class ListsController < ApplicationController
   def create
     @list = List.create(list_params)
     @list.user = current_user
-    byebug
        if @list.save
           redirect_to list_path(@list)
       else
