@@ -1,6 +1,8 @@
 class List < ApplicationRecord
     validates :name, presence: {message: "You forgot a %{attribute}"} #happen before updating a db
-     #list = List.create
+    
+    
+    #list = List.create
      #list.errors.full_messages
     belongs_to :user
     has_many :company_lists, dependent: :destroy # When you delete this list, delete all of the company_list 

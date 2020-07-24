@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :company
+    validates :content, presence: true, length: {maximum: 250}
 
     accepts_nested_attributes_for :user
     
