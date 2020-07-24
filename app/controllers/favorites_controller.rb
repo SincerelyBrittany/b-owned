@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-    before_action :authenticate_user!, except: [:show, :index]
+    before_action :authenticate_user!
     def create
         @favorite = Favorite.new(fav_params)
         @favorite.user = current_user
