@@ -1,0 +1,34 @@
+
+<h5>Comments count: <%= @user.comments.count %></h5>
+<h5>Favorites count: <%= @user.favorites.count %></h5>
+
+
+<h2><%= @user.username %> </h2> has commented on the following companys:
+ 
+<% @user.companies.each do |company| %>
+  <%= link_to company.title, company_path(company) %>
+<% end %>
+
+
+<br><br>
+Favorited:
+  <% @user.favorites.each do |favorite| %>
+  <br>
+    <%= link_to favorite.company.title, company_path(favorite.company) %> loved
+     ❤️
+  <% end %>
+
+  <br><br>
+<h5><%= @user.username %> lists: </h5>
+  <% @user.lists.each do |list| %>
+  <br>
+    <%= link_to list.name, list_path(list.id) %>
+  <% end %>
+
+
+<p>This link will only edit the list USERName- Need to find a way to edit the contents/company names associated with the user</p>
+<%= link_to 'edit', edit_user_path(@user) %>
+
+<%= link_to 'Destroy',  @user ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
