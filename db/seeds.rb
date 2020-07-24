@@ -28,34 +28,38 @@
 c1 = Company.create(title: "First Company", description: "This is the first company")
 c2 = Company.create(title: "Second Company", description: "This is the Second company")
 c3 = Company.create(title: "Third Company", description: "This is the Third company")
-u1 = User.create(username: "britt", email: "britt@gmail.com")
+u1 = User.create(username: "britt", email: "britt@gmail.com", password: "password")
+# u1.save
 u1.comments.create(:content => "This is a first comment for user britt", :company_id => 1)
 u1.comments.create(:content => "This is a comment 2 for user britt", :company_id => 2)
-u1.favorites.create(:liked => true, :company_id => 2)
+# u1.favorites.create(:company_id => 2).save
 #u1.favorites.find(1).update(liked: false)
 #.save(validate: false)
 u1.lists.create(:name => "B's List")
 u1.lists.create(:name => "B's List 2")
 
-u2 = User.create(username: "a", email: "a@gmail.com")
+u2 = User.create(username: "a", email: "a@gmail.com", password: "password")
+# u2.save
 u2.comments.create(:content => "This is a comment the first comment for user A", :company_id => 2)
 u2.comments.create(:content => "This is a comment 2 comment for user A", :company_id => 2)
 u2.comments.create(:content => "This is a comment 3 comment for user A", :company_id => 3)
-u2.favorites.create(:liked => true, :company_id => 1)
+# u2.favorites.create(:company_id => 1)
 #u1.favorites.find(1).update(liked: false)
 #.save(validate: false)
 u2.lists.create(:name => "A's List")
 u2.lists.create(:name => "A's Second List")
+u2.save
 
-u3 = User.create(username: "c", email: "c@gmail.com")
+u3 = User.create(username: "c", email: "c@gmail.com", password: "password")
+# u3.save
 u3.comments.create(:content => "This is a comment the first comment for user C", :company_id => 1)
 u3.comments.create(:content => "This is a comment 2 comment for user C", :company_id => 2)
 u3.comments.create(:content => "This is a comment 3 comment for user C", :company_id => 3)
-u3.favorites.create(:liked => true, :company_id => 1)
-u3.favorites.create(:liked => true, :company_id => 2)
-u3.favorites.create(:liked => true, :company_id => 3)
-#u1.favorites.find(1).update(liked: false)
-#.save(validate: false)
+# u3.favorites.create(:company_id => 1)
+# u3.favorites.create(:company_id => 2)
+# u3.favorites.create(:company_id => 3)
+# #u1.favorites.find(1).update(liked: false)
+# #.save(validate: false)
 u3.lists.create(:name => "C's List")
 u3.lists.create(:name => "C's Second List")
 

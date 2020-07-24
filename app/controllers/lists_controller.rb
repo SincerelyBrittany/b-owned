@@ -13,6 +13,8 @@ class ListsController < ApplicationController
   
   def create
     @list = List.create(list_params)
+    @list.user = current_user
+    byebug
        if @list.save
           redirect_to list_path(@list)
       else
@@ -36,7 +38,7 @@ class ListsController < ApplicationController
     private
  
     def list_params
-      params.require(:list).permit(:name, :user_id)
+      params.require(:list).permit(:name)
     end
 
     def set_list
