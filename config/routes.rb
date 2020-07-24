@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   root :to => "companies#index"
   resources :lists
-  resources :users
   resources :companies
   resources :favorites
   resources :comments
