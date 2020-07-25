@@ -70,7 +70,6 @@ Commentors:
 <%= form_for @company.comments.build do |f| %>
   <%= f.hidden_field :company_id %>
   <p>
-    <%= f.collection_select :user_id, User.all, :id, :username %>
   </p>  
   <p>
     <%= f.label :content, "New Comment" %><br>

@@ -53,8 +53,6 @@ class ApplicationController < ActionController::Base
     redirect_to companies_path if user != current_user
   end
 
- 
-
   def authorize_admin
     authenticate
     redirect_to companies_path if current_user.admin == false
