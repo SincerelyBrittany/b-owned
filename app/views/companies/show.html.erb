@@ -20,7 +20,7 @@
 <%# Favorite this company%>
 <div class="center">
 <%= form_for Favorite.new do |f| %>
-  <%=f.hidden_field :user_id, value: 1 %>
+  <%#f.hidden_field :user_id, value: 1 %>
   <%=f.hidden_field :company_id, value: @company.id %>
   <%= f.submit "Favorite this company" %>
 <% end %>
@@ -30,7 +30,7 @@
  <h3> Add to list: </h3>
  <div class="companylist_form">
 <%= form_for CompanyList.new do |f| %>
-  <%= f.collection_select :list_id , List.all, :id, :name %>
+  <%= f.collection_select :list_id , current_user.lists, :id, :name %>
   <%= f.hidden_field :company_id, value: @company.id %>
   <%= f.submit "Add to your list", :class => "btn" %>
 <% end %>
@@ -39,12 +39,17 @@
 
 
 <%# Displays comments from user %>
+
 <h4> Comments: </h4>
   <% @company.comments.each do |comment| %>
   <br>
   <p>  <%= link_to comment.user.username, user_path(comment.user) %> said
     <%= comment.content %>
     <%= comment.last_updated %> </p>
+    <% if comment.user == current_user %> 
+        <%= link_to "edit", companies_path %> </p>
+        <%= link_to "delete", companies_path %> </p>
+    <%end %>
   <% end %>
 
 
@@ -69,7 +74,6 @@ Commentors:
 <%= form_for @company.comments.build do |f| %>
   <%= f.hidden_field :company_id %>
   <p>
-    <%= f.collection_select :user_id, User.all, :id, :username %>
   </p>  
   <p>
     <%= f.label :content, "New Comment" %><br>
@@ -81,4 +85,3 @@ Commentors:
 
 
 <br><br>
-
