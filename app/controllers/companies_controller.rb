@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user, except: [:index]
  # before_action :set_company, only: [:show]
     # def index
     #   @companies = Company.all
@@ -30,7 +31,12 @@ class CompaniesController < ApplicationController
     end
   
     def new
-      @company = Company.new
+
+      if current_user.owner? || current_user.admin?
+         @company = Company.new
+      else 
+        redirect_to companies_path
+      end 
     end
   
       def create
