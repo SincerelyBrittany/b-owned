@@ -14,7 +14,7 @@
   <% flash.each do |k,v| %>
     <%= v %>
     <% end %>
-       <%= navbar %>
+       <%= current_user_logged_in %>
   </header>
      <div class="grid-container">
     <%= yield %>
