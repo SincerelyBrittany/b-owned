@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
         session[:user_id] = user.id
     end 
 
-    def authenticate
+    def authenticate_user
         redirect_to login_path if !logged_in?
     end 
+
     def current_user
         User.find_by(id: session[:user_id])
     end
