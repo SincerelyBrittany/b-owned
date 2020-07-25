@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :owners, path: 'owners'
+  devise_for :owners, path: 'owners'#, controllers: { sessions: "owners/sessions"}
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :users, only: [:show, :edit, :update]
