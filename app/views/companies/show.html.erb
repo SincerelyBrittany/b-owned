@@ -46,6 +46,10 @@
   <p>  <%= link_to comment.user.username, user_path(comment.user) %> said
     <%= comment.content %>
     <%= comment.last_updated %> </p>
+    <% if comment.user == current_user %> 
+        <%= link_to "edit", companies_path %> </p>
+        <%= link_to "delete", companies_path %> </p>
+    <%end %>
   <% end %>
 
 
