@@ -20,15 +20,7 @@
   <%# </p> %>
   <%= render 'layouts/alerts' %>
 
-    <% if current_user && current_user.admin == false %>
-        <%= render 'layouts/logged_in_navbar' %>
-    <% elsif current_user && current_user.admin == true %>
-      <%= render 'layouts/admin_logged_in_navbar' %>
-    <% else %>
-       <%= render 'layouts/logged_out_navbar' %>
-    <% end %>
-
-
+  <%= current_user_logged_in %>
      <div class="grid-container">
     <%= yield %>
     </div>

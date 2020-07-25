@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_225031) do
+ActiveRecord::Schema.define(version: 2020_07_25_154150) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 2020_07_24_225031) do
   create_table "companies", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_companies_on_owner_id"
   end
 
   create_table "company_lists", force: :cascade do |t|
@@ -55,18 +57,6 @@ ActiveRecord::Schema.define(version: 2020_07_24_225031) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
-  create_table "owners", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_owners_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_225031) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
     t.string "username"
+    t.boolean "owner", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

@@ -11,6 +11,7 @@ class User < ApplicationRecord
       errors.add(:username, :invalid)
     end
   end
+
   attr_writer :login
 
   def login
@@ -46,10 +47,21 @@ class User < ApplicationRecord
          #      self.user ? self.user.name : nil
          # end
      
-     
-         def company_name
-           self.company.title
-         end
+          # def owner?
+          #   self.owner
+          # end 
+
+          # def user
+          #   self.owner == false and self.admin == false
+          # end 
+
+          # def admin
+          #   self.owner == false and self.admin == true
+          # end 
+
+          def company_name
+             self.company.title
+          end
        
          def company_name=(title)
            self.company = Company.find_or_create_by(title: title)
@@ -58,5 +70,4 @@ class User < ApplicationRecord
          def comment_count
            self.comments.size
          end
-         # has_many :companies, through: :commentsZZ
 end

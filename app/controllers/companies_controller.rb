@@ -31,7 +31,12 @@ class CompaniesController < ApplicationController
     end
   
     def new
-      @company = Company.new
+
+      if current_user.owner? || current_user.admin?
+         @company = Company.new
+      else 
+        redirect_to companies_path
+      end 
     end
   
       def create

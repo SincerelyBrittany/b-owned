@@ -28,7 +28,7 @@
 c1 = Company.create(title: "First Company", description: "This is the first company")
 c2 = Company.create(title: "Second Company", description: "This is the Second company")
 c3 = Company.create(title: "Third Company", description: "This is the Third company")
-u1 = User.create(username: "britt", email: "britt@gmail.com", password: "password")
+u1 = User.create(username: "britt", email: "britt@gmail.com", password: "password", admin: true)
 # u1.save
 u1.comments.create(:content => "This is a first comment for user britt", :company_id => 1)
 u1.comments.create(:content => "This is a comment 2 for user britt", :company_id => 2)
@@ -38,7 +38,7 @@ u1.comments.create(:content => "This is a comment 2 for user britt", :company_id
 u1.lists.create(:name => "B's List")
 u1.lists.create(:name => "B's List 2")
 
-u2 = User.create(username: "a", email: "a@gmail.com", password: "password")
+u2 = User.create(username: "a", email: "a@gmail.com", password: "password", owner: true)
 # u2.save
 u2.comments.create(:content => "This is a comment the first comment for user A", :company_id => 2)
 u2.comments.create(:content => "This is a comment 2 comment for user A", :company_id => 2)
