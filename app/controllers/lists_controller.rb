@@ -1,11 +1,13 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_list, only: [:show, :destroy, :edit, :update]
+  before_action :set_list, only: [:destroy, :edit, :update]
+
   def index
 		@lists = List.all
 	end
 
   def show
+    @list = List.find(params[:id])
 	end
 
 	def new
@@ -30,10 +32,10 @@ class ListsController < ApplicationController
 	def edit
   end
 
-    def destroy
-        @list.destroy
-        redirect_to lists_url
-      end
+  def destroy
+    @list.destroy
+    redirect_to lists_url
+  end
     
     private
  
@@ -43,6 +45,7 @@ class ListsController < ApplicationController
 
     def set_list
       @list = List.find(params[:id])
+      authorize(@list)
     end
 
 end

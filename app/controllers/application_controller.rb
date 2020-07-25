@@ -21,4 +21,58 @@ class ApplicationController < ActionController::Base
     #   devise_parameter_sanitizer.permit(:account_update,
     #     keys: [:username, :email, :password_confirmation, :current_password])
     # end
+
+
+  #   def logged_in?
+  #     # !!session[:user_id]
+  #     !!current_user
+  # end 
+
+  # def current_user
+  #     User.find_by(id: session[:user_id])
+  # end 
+
+  # def log_in(user)
+  #     session[:user_id] = user.id
+  # end 
+
+  # def authenticate
+  #     redirect_to login_path if !logged_in?
+  # end 
+
+  def logged_in?
+    !!current_user
+  end
+
+  def authenticate
+    redirect '/login' if !logged_in?
+  end
+
+  def authorize_user(user)
+    authenticate
+    redirect '/companies' if user != current_user
+  end
+
+  def authorize_owner(owner)
+    authenticate
+    redirect '/companies' if user != current_user && current_user.owner == false
+  end
+
+  def authorize_admin(admin)
+    authenticate
+    redirect '/companies' if user != current_user && current_user.admin == false
+  end
+
+  # def authorize_user(user)
+  #   if user != current_user 
+  #     redirect '/companies' 
+  #   elsif user != current_user && current_user.owner == false
+  # end 
+
+  def authorize(list)
+     authenticate
+     redirect_to list_path(list.id) if list.user != current_user && current_user.admin != true
+  end
+
+
 end
