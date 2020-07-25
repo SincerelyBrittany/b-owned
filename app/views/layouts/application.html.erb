@@ -11,6 +11,9 @@
 
   <body>
  <header>
+  <% flash.each do |k,v| %>
+    <%= v %>
+    <% end %>
        <%= navbar %>
   </header>
      <div class="grid-container">
