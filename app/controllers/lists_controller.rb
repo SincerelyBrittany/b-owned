@@ -3,10 +3,12 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:destroy, :edit, :update]
 
   def index
-		@lists = List.all
+    authorize_admin
+    @lists = List.all
 	end
 
   def show
+    #everyone can see
     @list = List.find(params[:id])
 	end
 
@@ -47,5 +49,7 @@ class ListsController < ApplicationController
       @list = List.find(params[:id])
       authorize(@list)
     end
+
+
 
 end

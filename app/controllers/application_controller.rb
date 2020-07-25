@@ -50,17 +50,14 @@ class ApplicationController < ActionController::Base
 
   def authorize_user(user)
     authenticate
-    redirect '/companies' if user != current_user
+    redirect_to companies_path if user != current_user
   end
 
-  def authorize_owner(owner)
-    authenticate
-    redirect '/companies' if user != current_user && current_user.owner == false
-  end
+ 
 
-  def authorize_admin(admin)
+  def authorize_admin
     authenticate
-    redirect '/companies' if user != current_user && current_user.admin == false
+    redirect_to companies_path if current_user.admin == false
   end
 
   # def authorize_user(user)
