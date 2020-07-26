@@ -1,14 +1,40 @@
 class Company < ApplicationRecord
+    #Validations Section
+    validates :title, uniqueness: true
+    validates :phone, uniqueness: true
+    validates :email, uniqueness: true
+    validates :website, uniqueness: true
+    validates :location, uniqueness: true
+
+    #Users Section
+    belongs_to :user,-> { where('owner == true OR admin == true') }
+
+    #Comments Section
     has_many :comments
     has_many :users, through: :comments
 
+    #List Section
     has_many :company_lists
     has_many :lists, through: :company_lists
     accepts_nested_attributes_for :lists
 
+    #Favorites Section
+    has_many :favorites
+    has_many :users, through: :favorites
+
     def favorite_count
         self.favorites.size
     end
+
+    #Search Companies 
+    def self.search(query)
+      if query.present?
+        where('TITLE like ?', "%#{query}%")
+      else
+        self.all
+      end
+    end
+
 
     def lists_attributes=(list_hash)
         list_hash.values.each do |list_attribute|
@@ -19,19 +45,5 @@ class Company < ApplicationRecord
         end 
       end 
 
-    def self.search(query)
-        if query.present?
-          where('TITLE like ?', "%#{query}%")
-        else
-          self.all
-        end
-    end
-
-
-    has_many :favorites
-    has_many :users, through: :favorites
-
-    def favorite_count
-        self.favorites.size
-    end
+ 
 end
