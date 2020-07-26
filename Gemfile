@@ -26,6 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 gem 'faker'
 gem 'rails_admin', '~> 2.0'
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'materialize-sass', '~> 1.0.0'
 
