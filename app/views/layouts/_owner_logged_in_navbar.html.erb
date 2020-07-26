@@ -4,6 +4,7 @@
     <%# <li class="item"><a href="#">Home</a></li> %>
     <li class="item"><%= link_to "All Companies", companies_path %></a></li>
     <li class="item"><%= link_to "Your page", user_path(current_user) %></a></li>
+    <li class="item"><%= link_to "Create a list", new_list_path %></a></li>
     <li class="item"><%= link_to "Create a Company", new_company_path %></a></li>
     <li class="item"><%= link_to "Log out", logout_path, method: :delete %></a></li>
     <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
