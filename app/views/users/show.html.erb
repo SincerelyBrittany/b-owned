@@ -5,8 +5,8 @@
 
 <h2><%= @user.username %> </h2> has commented on the following companys:
  
-<% @user.companies.each do |company| %>
-  <%= link_to company.title, company_path(company) %>
+<% @user.comments.each do |comment| %>
+  <%= link_to comment.company.title, company_path(comment.company) %>
 <% end %>
 
 
