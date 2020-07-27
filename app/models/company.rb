@@ -13,6 +13,7 @@ class Company < ApplicationRecord
     #Comments Section
     has_many :comments
     has_many :users, through: :comments
+    # accepts_nested_attributes_for :comments
 
     #List Section
     has_many :company_lists

@@ -1,0 +1,42 @@
+<div class="center">
+
+<h1><%= @user.username %> </h1> 
+
+
+
+<h3>Comments count: <%= @user.comments.count %></h3>
+<h3>Favorites count: <%= @user.favorites.count %></h3>
+
+
+<p>Recent Comments:</p>
+ 
+<% @user.comments.each do |comment| %>
+ <div class="single-comment">
+  <%= link_to comment.company.title, company_path(comment.company) %>
+   <%= comment.content %>
+  </div>
+<% end %>
+
+
+<br><br>
+  <%# @user.favorites.each do |favorite| %>
+  <br>
+    <%# link_to favorite.company.title, company_path(favorite.company) %> 
+  <%# end %>
+
+  <br><br>
+<h2><%= @user.username %> lists: </h2>
+  <% @user.lists.each do |list| %>
+ <div class="single-comment">
+    <%= link_to list.name, list_path(list.id) %>
+  </div>
+  <% end %>
+
+
+<p>This link will only edit the list USERName- Need to find a way to edit the contents/company names associated with the user</p>
+<%= link_to 'edit', edit_user_path(@user) %>
+
+<%= link_to 'Destroy',  @user ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+</div>
