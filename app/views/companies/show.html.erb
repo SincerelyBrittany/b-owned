@@ -2,7 +2,7 @@
 <p> [x] Goals for this page is to allow a user to comment on the page </p>
 <p> [ ] USER CAN CRUD THEIR OWN COMMENT </p>
 <p> [x] Goals for this page is to allow a user to add the company to a list they have </p>
-<p> [ ] Goals for this page is to see the location based off Google Maps api </p>
+<p> [X ] Goals for this page is to see the location based off Google Maps api </p>
 
 <div class="company_show">
 <%# Displays company title %>
@@ -20,12 +20,14 @@
 <%# Displays company description %>
 <h2>About: <%= @company.description %></h2><br>
 
-  <iframe
+<div class="center">
+  <iframe  
     width="600"
     height="450"
     frameborder="0" style="border:0"
     src="https://www.google.com/maps/embed/v1/place?key=<%=ENV['GOOGLE_KEY']%>&q=<%= @company.location %>" allowfullscreen>
   </iframe>
+</div>
 
 <%# Displays company comment count %>
 <h3>Comments count: <%= @company.comments.count %></h3> 
@@ -35,39 +37,40 @@
 
 <%# Favorite this company%>
 <div class="center">
+
 <%= form_for Favorite.new do |f| %>
   <%#f.hidden_field :user_id, value: 1 %>
   <%=f.hidden_field :company_id, value: @company.id %>
   <%= f.submit "Favorite this company" %>
 <% end %>
+
 </div>
 
-<br><br>
- <h3> Add to list: </h3>
- <div class="companylist_form">
-<%= form_for CompanyList.new do |f| %>
-  <%= f.collection_select :list_id , current_user.lists, :id, :name %>
-  <%= f.hidden_field :company_id, value: @company.id %>
-  <%= f.submit "Add to your list", :class => "btn" %>
-<% end %>
-</div>
-<br><br>
+<br>
+<%= listshow %>
+<br>
+
+
 
 
 <%# Displays comments from user %>
-
-<h4> Comments: </h4>
+<div class="flexbox">
+<h4 class="center"> Comments: </h4>
   <% @company.comments.each do |comment| %>
   <br>
+  <div class="single-comment">
   <p>  <%= link_to comment.user.username, user_path(comment.user) %> said
     <%= comment.content %>
-    <%= comment.last_updated %> </p>
+    <%= comment.last_updated %> 
     <% if comment.user == current_user %> 
-        <%= link_to "edit", companies_path %> </p>
-        <%= link_to "delete", companies_path %> </p>
-    <%end %>
+       <%= link_to "edit", edit_company_comment_path(@company.id, comment.id)%>
+       <%# link_to "Edit Post", edit_author_post_path(@post.author, @post) if @post.author %>
+        <%# link_to "delete", companies_path %> 
+    <%end %></p>
+      </div>
   <% end %>
 
+</div>
 
 <br><br>
 
@@ -86,18 +89,18 @@ Commentors:
 <% end %>
 
 <br><br>
-<p> add a comment </p>
+<div class="center">
 <%= form_for @company.comments.build do |f| %>
   <%= f.hidden_field :company_id %>
   <p>
   </p>  
   <p>
-    <%= f.label :content, "New Comment" %><br>
+    <%= f.label :content, "Add a New Comment" %><br>
     <%= f.text_area :content %>
   </p>
   <br/>
   <%= f.submit %>
 <% end %>
-
+</div>
 
 <br><br>
