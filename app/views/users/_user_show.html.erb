@@ -1,0 +1,33 @@
+<div class="center">
+<h1><%= @user.username %> </h1> 
+<h3>Comments count: <%= @user.comments.count %></h3>
+<h3>Favorites count: <%= @user.favorites.count %></h3>
+
+  <%if @user.comments.present? %>
+      <p>Recent Comments:</p>
+      <% @user.comments.each do |comment| %>
+          <div class="single-comment">
+          <%= link_to comment.company.title, company_path(comment.company) %>
+          <%= comment.content %>
+          </div>
+      <% end %>
+  <% end %>
+
+
+  <%if @user.lists.present? %><br><br>
+    <h2><%= @user.username %> lists: </h2>
+         <% @user.lists.each do |list| %>
+            <div class="single-comment">
+            <%= link_to list.name, list_path(list.id) %>
+            </div>
+          <% end %>
+   <% end %>
+
+
+  <% if @user == current_user %>
+    <%= link_to 'edit', edit_user_path(@user) %>
+  <% end %>
+
+<br><br>
+</div>
+

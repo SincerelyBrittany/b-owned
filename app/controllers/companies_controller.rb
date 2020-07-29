@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user, except: [:index]
  # before_action :set_company, only: [:show]
     # def index
     #   @companies = Company.all
@@ -30,13 +31,20 @@ class CompaniesController < ApplicationController
     end
   
     def new
-      @company = Company.new
+    
+      if current_user.owner? || current_user.admin?
+         @company = Company.new
+      
+      else 
+        redirect_to companies_path
+      end 
     end
   
       def create
-      
+         
           #@company = company.create({name: params[:company][:name], user_id: 1}) #must set up current user and company params properly
           @company = Company.create(company_params)
+          @company.user = current_user
           if @company.save
         redirect_to company_path(@company)
       else
@@ -62,7 +70,7 @@ class CompaniesController < ApplicationController
         end
   private  
       def company_params
-        params.require(:company).permit(:title, :description)
+        params.require(:company).permit(:title, :description,:email, :phone, :website, :location)
       end
         def company_params_with_list
           params.require(:company).permit(:list_ids)

@@ -12,13 +12,30 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "Company Title" %>
   </div>
     <div class="field">
+    <%= f.label :email %><br>
+    <%= f.email_field :email, placeholder: "Company Email" %>
+  </div>
+    <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.telephone_field :phone, placeholder: "Company Phone Number"%>
+  </div>
+     <div class="field">
+    <%= f.label :website %><br>
+    <%= f.url_field :website, placeholder: "Company Website" %>
+  </div>
+     <div class="field">
+    <%= f.label :location %><br>
+    <%= f.telephone_field :location, placeholder: "Company Location"%>
+  </div>
+      <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description, placeholder: "Description of Company" %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+

@@ -1,0 +1,14 @@
+<% if current_user.lists.present? %>
+ <h3> Add to list: </h3>
+ <div class="companylist_form">
+<%= form_for CompanyList.new do |f| %>
+  <%= f.collection_select :list_id , current_user.lists, :id, :name %>
+  <%= f.hidden_field :company_id, value: @company.id %>
+  <%= f.submit "Add to your list", :class => "btn" %>
+<% end %>
+</div>
+<% else %>
+<div class="center">
+    <%= link_to "Create a list", new_list_path %></a>
+  </div>
+<%end%>

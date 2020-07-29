@@ -2,7 +2,7 @@
 <p> [x] Goals for this page is to allow users to search companies </p>
 <p> [ ] Goals for this page is to allow users request to add a company to admin </p>
 
-<h1>Search for a company</h1>
+<h1><%if current_user %> Hello <%= current_user.username.capitalize %>, <%end%> Search for a company</h1>
 
 <%= form_tag companies_path, method: :get do %>
   <p>
@@ -13,8 +13,9 @@
 
 
 
-<ul>
+<ol>
 <% @companies.each do |company| %>
   <li><%= link_to company.title, company %></li>
 <% end %>
-</ul>
+</ol>
+
