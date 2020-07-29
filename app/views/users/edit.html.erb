@@ -1,2 +1,4 @@
 <h1>User Edit Form</h1>
 <%= render 'form' %>
+
+ <%= link_to 'Destroy',  @user ,  method: :delete, data: { confirm: 'Are you sure?' } %>
