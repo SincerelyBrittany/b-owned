@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
     validates :content, presence: true, length: {maximum: 250}
 
     accepts_nested_attributes_for :user
+    accepts_nested_attributes_for :company
     
     def user_attributes=(user_attributes)
         self.user = User.find_or_create_by(username: user_attributes[:username]) unless user_attributes[:username].blank?
