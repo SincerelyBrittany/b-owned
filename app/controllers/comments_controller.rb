@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
 	end
 
   def edit
+    redirect_to @comment.company if @comment.user != current_user
   end
 
   def destroy
