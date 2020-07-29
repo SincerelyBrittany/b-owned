@@ -2,13 +2,11 @@
 ⌘K V
 ⇧⌘V
 
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -79,12 +77,12 @@ bundle install
 To run your migrations and update your db/schema.rb file to match the structure of the database, run the following:
 
 ```sh
-rake db:migrate
+rails db:migrate
 ```
 
 To create data in the database, run the following:
 ```sh
-rake db:seed
+rails db:seed
 ```
 
 ```sh
@@ -104,7 +102,7 @@ git clone https://github.com/SincerelyBrittany/b-owned.git
 ```sh
 bundle install
 ```
-4. Created a .env file, add the file to your gitignore, and enter your API KEYS:
+4. Created a ``.env`` file, add the file to your gitignore, and enter your API KEYS:
 ```JS
   GOOGLE_KEY = "KEY_HERE"
 ```
