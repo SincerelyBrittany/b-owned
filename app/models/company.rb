@@ -11,17 +11,17 @@ class Company < ApplicationRecord
     belongs_to :user,-> { where('owner == true OR admin == true') }
 
     #Comments Section
-    has_many :comments
+    has_many :comments, dependent: :destroy
     has_many :users, through: :comments
     # accepts_nested_attributes_for :comments
 
     #List Section
-    has_many :company_lists
+    has_many :company_lists, dependent: :destroy
     has_many :lists, through: :company_lists
     accepts_nested_attributes_for :lists
 
     #Favorites Section
-    has_many :favorites
+    has_many :favorites, dependent: :destroy
     has_many :users, through: :favorites
 
     def favorite_count
