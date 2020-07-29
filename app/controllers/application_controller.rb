@@ -19,27 +19,21 @@ class ApplicationController < ActionController::Base
     end
     
     def authenticate
-      redirect '/login' if !logged_in?
+      redirect_to login_path if !logged_in?
     end
     
-    def authorize_user(user)
-      authenticate
-      redirect_to companies_path if user != current_user
+    def authorize_user(u)
+      redirect_to user_path(u.id) if u != current_user
     end
     
     def authorize_admin
       authenticate
       redirect_to companies_path if current_user.admin == false
     end
-    
-      # def authorize_user(user)
-      #   if user != current_user 
-      #     redirect '/companies' 
-      #   elsif user != current_user && current_user.owner == false
-      # end 
+
     
     def authorize(list)
-        authenticate
-        redirect_to list_path(list.id) if list.user != current_user && current_user.admin != true
+      authenticate
+      redirect_to list_path(list.id) if list.user != current_user && current_user.admin != true
     end
 end
