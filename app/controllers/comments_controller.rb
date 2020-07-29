@@ -36,7 +36,6 @@ class CommentsController < ApplicationController
     end 
   end 
 
-
   private
 
   def set_comment
@@ -45,6 +44,5 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content, :company_id, user_attributes:[:username], company_attributes:[:company_id])
-   #params.require(:comment).permit(:content, :company_id, :user_id)
   end
 end
