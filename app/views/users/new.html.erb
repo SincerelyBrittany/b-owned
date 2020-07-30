@@ -1,15 +1,15 @@
 <h1>User New Form</h1>
-<%# render 'form' %>
+<%= render 'form' %>
 
-<%= form_with model: @user, local: true do |f| %>
-<%= f.text_field :username, placeholder: "username" %>
-<%= f.text_field :email, placeholder: "email" %>
-<%= f.password_field :password, placeholder: "password" %>
-<%= f.submit %>
-<% end %>
+<%# form_with model: @user, local: true do |f| %>
+<%# f.text_field :username, placeholder: "username" %>
+<%# f.text_field :email, placeholder: "email" %>
+<%# f.password_field :password, placeholder: "password" %>
+<%# f.submit %>
+<%# end %>
 
-<% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-    <% end %>
-<% end %>
+<%# if @user.errors.any? %>
+    <%# @user.errors.full_messages.each do |msg| %>
+    <p><%# msg %></p>
+    <%# end %>
+<%# end %>

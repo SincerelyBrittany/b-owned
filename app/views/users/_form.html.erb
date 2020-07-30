@@ -1,24 +1,13 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>There were some errors:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_with model: @user, local: true do |f| %>
+<%= f.text_field :username, placeholder: "username" %>
+<%= f.text_field :email, placeholder: "email" %>
+<%= f.password_field :password, placeholder: "password" %>
+<%= f.submit %>
+<% end %>
+
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+    <% end %>
 <% end %>
