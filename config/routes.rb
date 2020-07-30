@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   resources :lists
   resources :users
   resources :companies
-  resources :favorites, only: [:create, :new]
   resources :comments, only: [:create, :new]
   resources :company_lists, only:[:create, :destroy]
 
   resources :companies do 
-    resources :favorites, only: [:index]
+    resources :favorites, only: [:index, :create]
     resources :comments, only: [:edit, :update, :destroy]
   end   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
