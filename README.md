@@ -137,7 +137,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Connect/Follow me:
 
 [![Linkedin][linkedin-shield]][linkedin-url]
-[![Twitter][twitter-shield]][linkedin-url]
+[![Twitter][twitter-shield]][twitter-url]
 [![Dev.to][dev-to-shield]][dev-to-url]
 
 
