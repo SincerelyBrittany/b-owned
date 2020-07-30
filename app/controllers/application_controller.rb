@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     def authorize_user(u)
       redirect_to user_path(u.id) if u != current_user
     end
+
+    def not_found
+      raise ActionController::RoutingError.new('Not Found')
+    end
     
     def authorize_admin
       authenticate

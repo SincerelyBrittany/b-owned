@@ -1,14 +1,93 @@
+<% if @company.location.present? %>
+<div class="center">
+  <iframe  
+    width="600"
+    height="450"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=<%=ENV['GOOGLE_KEY']%>&q=<%= @company.location %>" allowfullscreen>
+  </iframe>
+</div>
+<%end%>
+
+<%# Displays company comment count %>
+<%if @company.comments.count == 0 %>
+<h3> No comments for <%= @company.title%> yet! Be the first to comment below</h3>
+<%else%>
+<h3>Comments count: <%= @company.comments.count %></h3> 
+<%end%>
+
+<%# Displays company favorite count %>
+<%if @company.favorites.count == 0 %>
+<h3> No one follows <%= @company.title%> yet!</h3>
+<h3> Be the first to follow ⬇ </h3>
+<%else%>
+<h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
+<%end%>
+
+<%# Favorite this company%>
+
+
+<%= form_for Favorite.new do |f| %>
+<div class="center">
+  <%#f.hidden_field :user_id, value: 1 %>
+  <%=f.hidden_field :company_id, value: @company.id %>
+  <%= f.submit "Favorite this company" %>
+  </div>
+<% end %>
+
+
+
 <% if current_user.lists.present? %>
  <h3> Add to list: </h3>
  <div class="companylist_form">
-<%= form_for CompanyList.new do |f| %>
-  <%= f.collection_select :list_id , current_user.lists, :id, :name %>
-  <%= f.hidden_field :company_id, value: @company.id %>
-  <%= f.submit "Add to your list", :class => "btn" %>
+    <%= form_for CompanyList.new do |f| %>
+      <%= f.collection_select :list_id , current_user.lists, :id, :name %>
+      <%= f.hidden_field :company_id, value: @company.id %>
+      <%= f.submit "Add to your list", :class => "btn" %>
+       </div>
+    <% end %>
+
+<% else %>
+    <div class="center">
+        <%= link_to "Create a list", new_list_path %></a>
+    </div>
+<%end%>
+
+
+<%# Displays comments from user %>
+<div class="flexbox">
+<%if @company.comments.count == 0 %>
+
+<% else %>
+  <h4 class="center"> Comments: </h4>
+  <% @company.comments.each do |comment| %>
+  <br>
+       <div class="single-comment">
+          <p><%= link_to comment.user.username, user_path(comment.user) %> said
+          <p> <%= comment.content %></p>
+          <p> <%= comment.last_updated %> </p>
+            <% if comment.user == current_user %> 
+              <p><%= link_to "edit", edit_company_comment_path(@company.id, comment.id)%></p>
+            <%end %></p>
+      </div>
+<%end%>
+<%end%>
+
+
+<br><br>
+<div class="center">
+<%= form_for @company.comments.build do |f| %>
+
+  <%= f.hidden_field :company_id %>
+  <p>
+  </p>  
+  <p>
+    <%= f.label :content, "Add a New Comment" %><br>
+    <%= f.text_area :content %>
+  </p>
+  <br/>
+  <%= f.submit %>
 <% end %>
 </div>
-<% else %>
-<div class="center">
-    <%= link_to "Create a list", new_list_path %></a>
-  </div>
-<%end%>
+
+<br><br>

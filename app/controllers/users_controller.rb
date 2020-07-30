@@ -6,7 +6,11 @@ class UsersController < ApplicationController
       end
     
       def show
-        @user = User.find(params[:id])
+        @user = User.find(params[:id]) 
+        # byebug
+        # if @user.nil? || not_found
+        # redirect_to companies_path
+        # end 
       end
     
       def new

@@ -25,10 +25,12 @@
 #c2.favorites
 
 
-c1 = Company.create(title: "First Company", description: "This is the first company")
-c2 = Company.create(title: "Second Company", description: "This is the Second company")
-c3 = Company.create(title: "Third Company", description: "This is the Third company")
-u1 = User.create(username: "britt", email: "britt@gmail.com", password: "password", admin: true)
+u1 = User.create(username: "admin", email: "admin@gmail.com", password: "admin", admin: true)
+u2 = User.create(username: "owner", email: "owner@gmail.com", password: "owner", owner: true)
+u3 = User.create(username: "user", email: "user@gmail.com", password: "user")
+c1 = Company.create(title: "First Company", description: "This is the first company", phone: "983-495-9384", website: "https://www.google.com/", email: "firstcompany@gmail.com", location: "franklin,nj", user_id: 2)
+c2 = Company.create(title: "Second Company", description: "This is the Second company", phone: "989-968-9764", website: "https://www.amazon.com/", email: "secondcompany@gmail.com", location: "jamaica,ny", user_id: 2)
+c3 = Company.create(title: "Third Company", description: "This is the Third company", phone: "943-755-9545", website: "https://www.yahoo.com/", email: "thirdcompany@gmail.com", location:"new york, ny", user_id: 1)
 # u1.save
 u1.comments.create(:content => "This is a first comment for user britt", :company_id => 1)
 u1.comments.create(:content => "This is a comment 2 for user britt", :company_id => 2)
@@ -38,7 +40,7 @@ u1.comments.create(:content => "This is a comment 2 for user britt", :company_id
 u1.lists.create(:name => "B's List")
 u1.lists.create(:name => "B's List 2")
 
-u2 = User.create(username: "a", email: "a@gmail.com", password: "password", owner: true)
+
 # u2.save
 u2.comments.create(:content => "This is a comment the first comment for user A", :company_id => 2)
 u2.comments.create(:content => "This is a comment 2 comment for user A", :company_id => 2)
@@ -50,7 +52,6 @@ u2.lists.create(:name => "A's List")
 u2.lists.create(:name => "A's Second List")
 u2.save
 
-u3 = User.create(username: "c", email: "c@gmail.com", password: "password")
 # u3.save
 u3.comments.create(:content => "This is a comment the first comment for user C", :company_id => 1)
 u3.comments.create(:content => "This is a comment 2 comment for user C", :company_id => 2)
