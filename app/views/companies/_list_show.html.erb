@@ -25,14 +25,10 @@
 <%end%>
 
 <%# Favorite this company%>
-
-
-<%= form_for Favorite.new do |f| %>
-<div class="center">
-  <%#f.hidden_field :user_id, value: 1 %>
-  <%=f.hidden_field :company_id, value: @company.id %>
-  <%= f.submit "Favorite this company" %>
-  </div>
+<% if current_user.favorites.present? %>
+<%= button_to "unfollow", company_favorites_path(@company.id) %>
+<% else %>
+<%= button_to "follow", company_favorites_path(@company.id) %>
 <% end %>
 
 
@@ -57,7 +53,7 @@
 <%# Displays comments from user %>
 <div class="flexbox">
 <%if @company.comments.count == 0 %>
-
+<p> No comments yet </p>
 <% else %>
   <h4 class="center"> Comments: </h4>
   <% @company.comments.each do |comment| %>
