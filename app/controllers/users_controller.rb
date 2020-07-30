@@ -6,7 +6,11 @@ class UsersController < ApplicationController
       end
     
       def show
-        @user = User.find(params[:id])
+        @user = User.find_by_id(params[:id]) 
+        # byebug
+        if @user.nil? 
+        redirect_to companies_path
+        end 
       end
     
       def new

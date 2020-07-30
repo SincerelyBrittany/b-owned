@@ -1,10 +1,5 @@
-<p> [x] Goals for this page is to allow a user to favoite/follow the page </p>
-<p> [x] Goals for this page is to allow a user to comment on the page </p>
-<p> [ ] USER CAN CRUD THEIR OWN COMMENT </p>
-<p> [x] Goals for this page is to allow a user to add the company to a list they have </p>
-<p> [X ] Goals for this page is to see the location based off Google Maps api </p>
+ <div class="company_show grid-container center"> 
 
-<div class="company_show">
 <%# Displays company title %>
 <h1>Company NAME: <%= @company.title %></h1>
 
@@ -12,95 +7,20 @@
 <h2>Email: <%= @company.email %></h2><br>
 
 <%# Displays company website %>
+
 <h2>Website: <%= @company.website %></h2><br>
 
 <%# Displays company website %>
 <h2>Phone: <%= @company.phone %></h2><br>
 
 <%# Displays company description %>
-<h2>About: <%= @company.description %></h2><br>
+<p>About: <%= @company.description %></p><br>
 
-<div class="center">
-  <iframe  
-    width="600"
-    height="450"
-    frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=<%=ENV['GOOGLE_KEY']%>&q=<%= @company.location %>" allowfullscreen>
-  </iframe>
-</div>
 
-<%# Displays company comment count %>
-<h3>Comments count: <%= @company.comments.count %></h3> 
-
-<%# Displays company favorite count %>
-<h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
-
-<%# Favorite this company%>
-<div class="center">
-
-<%= form_for Favorite.new do |f| %>
-  <%#f.hidden_field :user_id, value: 1 %>
-  <%=f.hidden_field :company_id, value: @company.id %>
-  <%= f.submit "Favorite this company" %>
-<% end %>
-
-</div>
-
-<br>
 <%= listshow %>
+
 <br>
 
 
 
 
-<%# Displays comments from user %>
-<div class="flexbox">
-<h4 class="center"> Comments: </h4>
-  <% @company.comments.each do |comment| %>
-  <br>
-  <div class="single-comment">
-  <p>  <%= link_to comment.user.username, user_path(comment.user) %> said
-    <%= comment.content %>
-    <%= comment.last_updated %> 
-    <% if comment.user == current_user %> 
-       <%= link_to "edit", edit_company_comment_path(@company.id, comment.id)%>
-       <%# link_to "Edit Post", edit_author_post_path(@post.author, @post) if @post.author %>
-        <%# link_to "delete", companies_path %> 
-    <%end %></p>
-      </div>
-  <% end %>
-
-</div>
-
-<br><br>
-
-
-
-<%# Shows commentors username but not the content %>
-<% if false %>
-Commentors:
-<ul>
-<% @company.users.distinct.each do |user| %>
-  <li>
-    <%= link_to user.username, user_path(user) %>
-  </li>
-<% end %>
-</ul>
-<% end %>
-
-<br><br>
-<div class="center">
-<%= form_for @company.comments.build do |f| %>
-  <%= f.hidden_field :company_id %>
-  <p>
-  </p>  
-  <p>
-    <%= f.label :content, "Add a New Comment" %><br>
-    <%= f.text_area :content %>
-  </p>
-  <br/>
-  <%= f.submit %>
-<% end %>
-</div>
-
-<br><br>

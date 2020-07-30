@@ -1,9 +1,9 @@
 class Company < ApplicationRecord
     #Validations Section
-    # validates :title, uniqueness: true
-    # validates :phone, uniqueness: true
-    # validates :email, uniqueness: true
-    # validates :website, uniqueness: true
+    validates :title, uniqueness: true
+    validates :phone, uniqueness: true
+    validates :email, uniqueness: true
+    validates :website, uniqueness: true
     # validates :location, uniqueness: true
 
     #Users Section
