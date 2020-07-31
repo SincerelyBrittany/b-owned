@@ -3,9 +3,10 @@
     <li class="logo"><a href="#">Black Owned</a></li>
     <%# <li class="item"><a href="#">Home</a></li> %>
     <li class="item"><%= link_to "All Companies", companies_path %></a></li>
-    <li class="item"><%= link_to "Your page", user_path(current_user) %></a></li>
+    <li class="item"><%= link_to "Your Profile", user_path(current_user) %></a></li>
     <li class="item"><%= link_to "Create a Company", new_company_path %></a></li>
     <li class="item"><%= link_to "All lists", lists_path %></a></li>
+    <li class="item"><%= link_to "All users", users_path %></a></li>
     <li class="item"><%= link_to "Admin", rails_admin_path %></a></li>
     <li class="item"><%= link_to "Log out", logout_path, method: :delete %></a></li>
     <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>

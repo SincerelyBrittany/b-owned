@@ -1,11 +1,14 @@
+
+
+
+<div class="center full">
+<h1> Users Page </div>
 <p>This is user index -- should show all users</p>
 <p> Goals for this page is to ONLY allow ADMIN to see and edit users </p>
-
-
-
 
 <ul>
 <% @users.each do |user| %>
   <li><%= link_to user.username, user %></li>
 <% end %>
 </ul>
+</div>

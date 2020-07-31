@@ -166,7 +166,7 @@ body {
   grid-template-columns: 200px 500px;
   /* grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px; */
-  border: mediumaquamarine solid;
+  /* border: mediumaquamarine solid; */
 }
 
 .comment-grid div{
@@ -174,7 +174,7 @@ body {
   grid-template-columns: 200px 500px; */
   /* grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px; */
-  border: mediumaquamarine solid;
+  /* border: mediumaquamarine solid; */
 }
 
 

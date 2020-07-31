@@ -1,5 +1,8 @@
-<div class="center full">
+
 <h1><%= @user.username %> </h1> 
+  <% if @user == current_user %>
+    <p><%= link_to 'Account Settings', edit_user_path(@user) %></p>
+  <% end %>
 <div class="grid">
   <div class="left-half">
 <h3>Comments count: <%= @user.comments.count %></h3>
@@ -11,12 +14,14 @@
 
   <%if @user.comments.present? %>
       <p>Recent Comments:</p>
+       <div class="comment-grid">
       <% @user.comments.each do |comment| %>
-          <div class="single-comment">
-          <%= link_to comment.company.title, company_path(comment.company) %>
-          <%= comment.content %>
+          
+          <div><%= link_to comment.company.title, company_path(comment.company) %></div>
+          <div><%= comment.content %>
           </div>
       <% end %>
+      </div>
   <% end %>
 
 
@@ -28,12 +33,6 @@
             </div>
           <% end %>
    <% end %>
-
-
-  <% if @user == current_user %>
-    <%= link_to 'edit', edit_user_path(@user) %>
-  <% end %>
-
 <br><br>
-</div>
+
 
