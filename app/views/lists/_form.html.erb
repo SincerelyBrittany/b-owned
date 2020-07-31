@@ -10,14 +10,15 @@
       </ul>
     </div>
   <% end %>
-
+<div class="fields">
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
     <%# f.hidden_field :user_id, :value => 1 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "myButton" %>
+  </div>
   </div>
 <% end %>
 

@@ -2,23 +2,34 @@
 
 <div class="center">
 <h1><%= @user.username %> </h1> 
+  <% if @user == current_user %>
+    <p><%= link_to 'Account Settings', edit_user_path(@user) %></p>
+  <% end %>
+<div class="grid">
+  <div class="left-half">
 <h3>Comments count: <%= @user.comments.count %></h3>
+</div>
+<div class="right-half">
 <h3>Favorites count: <%= @user.favorites.count %></h3>
+</div>
+</div>
 
   <%if @user.comments.present? %>
       <p>Recent Comments:</p>
+       <div class="comment-grid">
       <% @user.comments.each do |comment| %>
-          <div class="single-comment">
-          <%= link_to comment.company.title, company_path(comment.company) %>
-          <%= comment.content %>
+          
+          <div><%= link_to comment.company.title, company_path(comment.company) %></div>
+          <div><%= comment.content %>
           </div>
       <% end %>
+      </div>
   <% end %>
 
 <br><br>
 
   <%if @user.companies.present? %>
-      <p>Companies owned:</p>
+      <h2>Companies owned:</h2>
       <% @user.companies.each do |company| %><br>
           <%= link_to company.title, company_path(company) %> 
       <% end %>
@@ -34,11 +45,7 @@
    <% end %>
 
 
-  <% if @user == current_user %>
-    <br><br>
-    <%= link_to 'edit', edit_user_path(@user) %>
-    <%= link_to 'Destroy',  @user ,  method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+
   <br><br>
 
 </div>

@@ -14,7 +14,7 @@
 <% @list.companies.each do |company| %>
     <li><p class="list_name move"> <%= link_to company.title, company %> </p>
     <%= button_to "delete", {:controller => :company_lists,
-      :action => 'destroy', :company_id => company.id, :current_list => @list.id }, :method => :delete, :class => 'list_btn' %>
+      :action => 'destroy', :company_id => company.id, :current_list => @list.id }, :method => :delete, :class => 'myButton' %>
     </li>
 <% end %>
 </ol>

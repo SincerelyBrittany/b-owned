@@ -26,3 +26,9 @@ form {
       display: inline-block;
       padding-top: 0;
   }
+
+  .fields{
+      /* position: absolute; */
+      margin-top: 50%;
+      padding-top: 50%;
+  }
