@@ -34,23 +34,48 @@ class CompaniesController < ApplicationController
         render :new
       end
     end
-  
-    def update
+
+    def edit
+      # byebug
       @company = Company.find(params[:id])
-      @list = params[:company][:list_ids]
-      @company.update(company_params_with_list)
-      redirect_to list_path(@list)
     end
   
-    def edit
-      @company = company.find(params[:id])
+    def update  
+      if params[:artist_id]
+        @company = Company.find(params[:id])
+        @list = params[:company][:list_ids]
+        @company.update(company_params_with_list)
+        redirect_to list_path(@list)
+      else 
+        unless current_user.admin? || current_user.owner?
+          redirect_to companies_path
+        else 
+          @company = Company.find(params[:id])
+            if @company.user == current_user
+              @company.update(company_params)
+              redirect_to company_path(@company)
+            else 
+              redirect_to companies_path
+            end 
+        end  
       end
+    end
+  
+
   
       def destroy
-          @company = company.find(params[:id])
-          @company.destroy
-          redirect_to companys_url
+        unless current_user.admin? || current_user.owner?
+          redirect_to companies_path
+        else 
+          @company = Company.find(params[:id])
+            if @company.user == current_user 
+                @company.destroy
+                redirect_to @company.user
+            else 
+              redirect_to companies_path
+            end 
         end
+      end 
         
   private  
       def company_params

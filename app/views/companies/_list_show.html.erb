@@ -71,7 +71,7 @@
             <br> <%= comment.last_updated %> </div>
           <div> <%= comment.content %>
             <% if comment.user == current_user %> 
-              <%= link_to "edit", edit_company_comment_path(@company.id, comment.id)%>
+              <%= button_to "edit", edit_company_comment_path(@company.id, comment.id), :class => "myButton"%>
             <%end %></div>
 <%end%>
 </div>
@@ -97,3 +97,11 @@
 
 
 <br><br>
+
+<% if current_user.owner == true || current_user.admin == true %>
+<%= link_to 'Rename', edit_company_path(@company), :class => "myButton"  %>
+ <%= button_to "delete", {:controller => :companies,
+      :action => 'destroy', :company_id => @company.id}, :method => :delete, :class => 'myButton' %>
+
+
+<% end %>
