@@ -71,7 +71,7 @@
             <br> <%= comment.last_updated %> </div>
           <div> <%= comment.content %>
             <% if comment.user == current_user %> 
-              <%= button_to "edit", edit_company_comment_path(@company.id, comment.id), :class => "myButton"%>
+              <%= link_to "edit", edit_company_comment_path(@company.id, comment.id), :class => "myButton"%>
             <%end %></div>
 <%end%>
 </div>

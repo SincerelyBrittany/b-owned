@@ -36,11 +36,10 @@ class CompaniesController < ApplicationController
     end
 
     def edit
-      # byebug
       @company = Company.find(params[:id])
     end
   
-    def update  
+    def update 
       if params[:artist_id]
         @company = Company.find(params[:id])
         @list = params[:company][:list_ids]
