@@ -20,7 +20,7 @@
 </div>
 
 <%# Favorite this company%>
-<% if @company.favorites.present? && @company.user == current_user %>
+<% if current_user.favorited?(@company) %>
   <%= button_to "unfollow", company_favorites_path(@company.id), class: "myButton" %>
 <% else %>
   <%= button_to "follow", company_favorites_path(@company.id), class: "myButton"  %>

@@ -42,6 +42,10 @@ class User < ApplicationRecord
     #     self.user.name
     # end
 
+    def favorited?(company)
+      favorite = Favorite.find_by(user_id: self.id, company_id: company.id)
+
+    end 
     # def user_name=(name)
     #     self.user = User.find_or_create_by(name: name)
     #   end
