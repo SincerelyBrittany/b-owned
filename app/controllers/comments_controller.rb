@@ -12,6 +12,10 @@ class CommentsController < ApplicationController
     end 
   end
 
+  def edit
+    redirect_to @comment.company if @comment.user != current_user
+  end
+
   def update
     if @comment.user == current_user
       @comment.update(params.require(:comment).permit(:content))
@@ -22,9 +26,6 @@ class CommentsController < ApplicationController
     end 
 	end
 
-  def edit
-    redirect_to @comment.company if @comment.user != current_user
-  end
 
   def destroy
     if @comment.user == current_user

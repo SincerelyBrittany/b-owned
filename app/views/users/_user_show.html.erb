@@ -1,33 +1,38 @@
-<div class="center">
+
 <h1><%= @user.username %> </h1> 
+  <% if @user == current_user %>
+    <p><%= link_to 'Account Settings', edit_user_path(@user) %></p>
+  <% end %>
+<div class="grid">
+  <div class="left-half">
 <h3>Comments count: <%= @user.comments.count %></h3>
+</div>
+<div class="right-half">
 <h3>Favorites count: <%= @user.favorites.count %></h3>
+</div>
+</div>
 
   <%if @user.comments.present? %>
       <p>Recent Comments:</p>
+       <div class="comment-grid">
       <% @user.comments.each do |comment| %>
-          <div class="single-comment">
-          <%= link_to comment.company.title, company_path(comment.company) %>
-          <%= comment.content %>
+          
+          <div><%= link_to comment.company.title, company_path(comment.company) %></div>
+          <div><%= comment.content %>
           </div>
       <% end %>
+      </div>
   <% end %>
 
 
   <%if @user.lists.present? %><br><br>
-    <h2><%= @user.username %> lists: </h2>
+    <h2> Your lists: </h2>
          <% @user.lists.each do |list| %>
             <div class="single-comment">
             <%= link_to list.name, list_path(list.id) %>
             </div>
           <% end %>
    <% end %>
-
-
-  <% if @user == current_user %>
-    <%= link_to 'edit', edit_user_path(@user) %>
-  <% end %>
-
 <br><br>
-</div>
+
 

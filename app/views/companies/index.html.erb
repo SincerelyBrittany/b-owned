@@ -1,15 +1,14 @@
 <%# [ ] Goals for this page is to allow users request to add a company to admin%>
-
+<div class="full">
 <h1><%if current_user %> Hello <%= current_user.username.capitalize %>! <%end%> 
 <h1>Search for a company</h1>
 
 <br>
 
-<div class="center">
 <%= form_tag companies_path, method: :get do %>
   <p>
     <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
+    <%= submit_tag "Search", name: nil, :class => "myButton" %>
   </p>
 <% end %>
 

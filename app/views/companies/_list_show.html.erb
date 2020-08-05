@@ -1,4 +1,35 @@
-<% if @company.location.present? %>
+<%# Displays company comment count %>
+<div class="grid">
+  <div class="left-half">
+<%if @company.comments.count == 0 %>
+<h3> No comments for <%= @company.title%> yet! Be the first to comment below</h3>
+<%else%>
+<h3>Comments count: <%= @company.comments.count %></h3> 
+<%end%>
+</div>
+
+<%# Displays company favorite count %>
+<div class="right-half">
+<%if @company.favorites.count == 0 %>
+<h3> No one follows <%= @company.title%> yet!</h3>
+<%# <h3 class="center"> Be the first to follow ⬇ </h3> %>
+<%else%>
+<h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
+<%end%>
+</div>
+</div>
+
+<%# Favorite this company%>
+<% if current_user.favorited?(@company) %>
+  <%= button_to "unfollow", company_favorites_path(@company.id), class: "myButton" %>
+<% else %>
+  <%= button_to "follow", company_favorites_path(@company.id), class: "myButton"  %>
+<% end %>
+
+<br>
+<br>
+
+<%# if @company.location.present? %>
 <div class="center">
   <iframe  
     width="600"
@@ -7,29 +38,7 @@
     src="https://www.google.com/maps/embed/v1/place?key=<%=ENV['GOOGLE_KEY']%>&q=<%= @company.location %>" allowfullscreen>
   </iframe>
 </div>
-<%end%>
-
-<%# Displays company comment count %>
-<%if @company.comments.count == 0 %>
-<h3> No comments for <%= @company.title%> yet! Be the first to comment below</h3>
-<%else%>
-<h3>Comments count: <%= @company.comments.count %></h3> 
-<%end%>
-
-<%# Displays company favorite count %>
-<%if @company.favorites.count == 0 %>
-<h3> No one follows <%= @company.title%> yet!</h3>
-<h3> Be the first to follow ⬇ </h3>
-<%else%>
-<h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
-<%end%>
-
-<%# Favorite this company%>
-<% if current_user.favorites.present? %>
-<%= button_to "unfollow", company_favorites_path(@company.id) %>
-<% else %>
-<%= button_to "follow", company_favorites_path(@company.id) %>
-<% end %>
+<%#end%>
 
 
 
@@ -39,7 +48,7 @@
     <%= form_for CompanyList.new do |f| %>
       <%= f.collection_select :list_id , current_user.lists, :id, :name %>
       <%= f.hidden_field :company_id, value: @company.id %>
-      <%= f.submit "Add to your list", :class => "btn" %>
+      <%= f.submit "Add to your list", :class => "myButton" %>
        </div>
     <% end %>
 
@@ -51,23 +60,23 @@
 
 
 <%# Displays comments from user %>
-<div class="flexbox">
+
 <%if @company.comments.count == 0 %>
-<p> No comments yet </p>
+  
 <% else %>
   <h4 class="center"> Comments: </h4>
-  <% @company.comments.each do |comment| %>
-  <br>
-       <div class="single-comment">
-          <p><%= link_to comment.user.username, user_path(comment.user) %> said
-          <p> <%= comment.content %></p>
-          <p> <%= comment.last_updated %> </p>
+  <div class="comment-grid">
+  <% @company.comments.each do |comment| %>       
+          <div><%= link_to comment.user.username, user_path(comment.user) %> 
+            <br> <%= comment.last_updated %> </div>
+          <div> <%= comment.content %>
             <% if comment.user == current_user %> 
-              <p><%= link_to "edit", edit_company_comment_path(@company.id, comment.id)%></p>
-            <%end %></p>
-      </div>
+              <%= link_to "edit", edit_company_comment_path(@company.id, comment.id), :class => "myButton"%>
+            <%end %></div>
 <%end%>
+</div>
 <%end%>
+
 
 
 <br><br>
@@ -82,8 +91,17 @@
     <%= f.text_area :content %>
   </p>
   <br/>
-  <%= f.submit %>
+  <%= f.submit "Create", :class => "myButton" %>
 <% end %>
 </div>
 
+
 <br><br>
+
+<% if current_user.owner == true || current_user.admin == true %>
+<%= link_to 'Rename', edit_company_path(@company), :class => "myButton"  %>
+ <%= button_to "delete", {:controller => :companies,
+      :action => 'destroy', :company_id => @company.id}, :method => :delete, :class => 'myButton' %>
+
+
+<% end %>

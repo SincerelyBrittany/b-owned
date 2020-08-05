@@ -1,3 +1,4 @@
+<div class="full">
 <%= form_for(@list) do |f| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
@@ -9,13 +10,16 @@
       </ul>
     </div>
   <% end %>
-
+<div class="fields">
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "list name" %>
     <%# f.hidden_field :user_id, :value => 1 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "myButton" %>
+  </div>
   </div>
 <% end %>
+
+</div>

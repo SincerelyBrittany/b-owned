@@ -1,23 +1,32 @@
- <div class="company_show grid-container center"> 
 
 <%# Displays company title %>
-<h1>Company NAME: <%= @company.title %></h1>
-
-<%# Displays company email %>
-<h2>Email: <%= @company.email %></h2><br>
-
-<%# Displays company website %>
-
-<h2>Website: <%= @company.website %></h2><br>
-
-<%# Displays company website %>
-<h2>Phone: <%= @company.phone %></h2><br>
+<h1 class="title"><%= @company.title %></h1>
 
 <%# Displays company description %>
-<p>About: <%= @company.description %></p><br>
+<h3 class="about-company">About: <%= @company.description %></h3><br>
 
+<div class="flexbox">
+<div class="company_info">
+<br>
+<%# Displays company email %>
+<p>Email: <%= @company.email %></p>
 
+<%# Displays company website %>
+
+<p>Website: <a href="<%= @company.website %>"> <%= @company.website %></a></p>
+
+<%# Displays company website %>
+<p>Phone: <%= @company.phone %></p>
+
+<br>
+
+</div>
+</div>
+<br>
 <%= listshow %>
+
+
+
 
 <br>
 

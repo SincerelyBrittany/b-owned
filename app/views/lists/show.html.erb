@@ -1,20 +1,21 @@
-<p> [X] Goals for this page is to allow a user to edit their list name </p>
+<%# <p> [X] Goals for this page is to allow a user to edit their list name </p>
 <p> Goals for this page is to allow a user to see all businesses that they added to the list </p>
 <p> Goals for this page is to allow a user to have CRUD actions with their list </p>
 <p>This is list show-- should show contents within a particular lists</p>
-<p> Need to find a way to destroy all companies associated with this list the contents/company names within the list</p>
+<p> Need to find a way to destroy all companies associated with this list the contents/company names within the list</p> %>
 
-<div class="center">
+<div class="center full">
 <h1 class="list_name"><%= @list.name %></h1> 
 
+<% if current_user == @list.user %>
 <p class="move"> <%= link_to 'Rename', edit_list_path(@list) %> | <%= link_to 'Destroy',  @list,  method: :delete, data: { confirm: 'Are you sure you want to destroy this list?' } %> </p>
-</div>
+<%end%>
 
 <ol class="list_ul">
 <% @list.companies.each do |company| %>
     <li><p class="list_name move"> <%= link_to company.title, company %> </p>
     <%= button_to "delete", {:controller => :company_lists,
-      :action => 'destroy', :company_id => company.id, :current_list => @list.id }, :method => :delete, :class => 'list_btn' %>
+      :action => 'destroy', :company_id => company.id, :current_list => @list.id }, :method => :delete, :class => 'myButton' %>
     </li>
 <% end %>
 </ol>
@@ -25,3 +26,4 @@
 
 <br>
 <br>
+</div>

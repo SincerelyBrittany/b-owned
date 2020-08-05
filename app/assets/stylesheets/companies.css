@@ -3,10 +3,11 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/ */
 
  h1 {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Cinzel", Gadget, sans-serif;
     font-weight: lighter;
     margin: 0;
     padding-top:20px;
+    padding-bottom:20px;
     font-size: 40px;
     text-align: center;
   }
@@ -22,11 +23,11 @@
   .company_show h3 {
    /* margin: 0 auto; */
    /* padding: 20px; */
-   /* display: inline; */
+   display: inline;
    font-weight: lighter;
     font-size: 15px;
     line-height: 0px;
-   text-align: center;
+   /* text-align: center; */
   }
 
   .company_show p{

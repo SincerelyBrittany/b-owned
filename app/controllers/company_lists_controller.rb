@@ -1,18 +1,4 @@
 class CompanyListsController < ApplicationController
-    # def index
-    #     byebug
-		
-	# end
-
-    # def show
-    #     byebug
-		
-	# end
-
-    # def new
-    #     byebug
-        
-	# end
 
     def create
        @companylist = CompanyList.create(strong_params)
@@ -21,11 +7,13 @@ class CompanyListsController < ApplicationController
 
     def destroy
         @currentlist = List.find(params[:current_list])
-        authorize_company_list?(@current_list)
+        if @currentlist.user != current_user && current_user.admin != true
+            redirect_to list_path(@currentlist.id), alert: "You cant edit this list"
+        else 
         @company = CompanyList.find_by(company_id: params[:company_id], list_id: params[:current_list])
-        # byebug
         @company.destroy
         redirect_to list_path(@currentlist)
+        end
       end
 
     private

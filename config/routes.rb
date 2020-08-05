@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
 
-  resources :lists
+  
   resources :users
   resources :companies
   resources :comments, only: [:create, :new]
+  resources :lists
   resources :company_lists, only:[:create, :destroy]
 
   resources :companies do 

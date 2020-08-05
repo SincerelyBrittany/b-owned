@@ -18,9 +18,13 @@
 
 
 body {
-  /* background-color:black; */
-  /* background-image: url("/assets/images/blackownedbusiness.jpg"); */
+  background-color:black;
+  background-image: url(blackownedbusiness.jpg);
+  background-size: cover;
+  background-repeat: repeat-x;
   margin: 0;
+  /* background-repeat: repeat;
+  background-size: 50% 50%; */
 
   /* background-image: url("https://jooinn.com/images/black-leather-2.jpg"); */
   
@@ -36,18 +40,112 @@ body {
   max-width: 700px; /* 2 */
   padding-right: 10px; /* 3 */
   padding-left:  10px; /* 3 */
-  height: 100vh;
+  height: 100%;
   
+}
+
+.full {
+  height: 100vh;
+}
+
+/* Comments and favorites count section in company show page */
+.grid{
+  display: grid;
+  grid-template-columns: 20px / 1fr 1fr;
+  margin: 0;
+}
+
+.left-half {
+  /* background:blue; */
+  grid-column: 1;
+  font-size: .75em;
+  /* width:  */
+  direction: rtl;
+  padding-right: 10px;
+  text-align: right;
+
+}
+
+.right-half {
+  /* background: #b6701e; */
+  grid-column: 2;
+  font-size: .75em;
+  padding-left: 10px;
+  /* width: fit-content; */
+  text-align: left;
+}
+
+.flexbox .company_info{
+  border-style: solid;
+  border-radius: .25em;
+  /* border-width: 100px; */
+  width: 50%;
+  display: inline-flex;
+  /* flex-wrap: nowrap; */
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+/* button on company show page */
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #a6827e;
+	background:linear-gradient(to bottom, #7d5d3b 5%, rgb(172, 145, 26) 100%);
+	background-color:#7d5d3b;
+	border-radius:1px;
+	border:1px solid #54381e;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:1px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #4d3534;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #634b30 5%, black 100%);
+	background-color:#634b30;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+/* Company Name Title */
+.title{
+  font-weight: bold;
+
+}
+
+.about-company{
+  color: rgb(172, 145, 26);
+}
+
+
+.flexbox p{
+  font-size: medium;
+ /* display: inline-block; */
+ padding: 0;
+ display:inline;
+ padding-left: 0;
+ padding-right: 0;
+ margin: 0;
 }
 
 .single-comment{
     /* display: inline-flex; */
-    border-style: solid;
+    /* border-style: solid;
     border-width: 5px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center; */
     /* align-items: center; */
     /* background-color: blue; */
   
@@ -60,9 +158,24 @@ body {
   /* border-style: solid;
   flex-grow: 4;
   color: red; */
-  flex-grow: 3;
+  /* flex-grow: 3; */
 }
 
+.comment-grid{
+  display: grid;
+  grid-template-columns: 200px 500px;
+  /* grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px; */
+  /* border: mediumaquamarine solid; */
+}
+
+.comment-grid div{
+  /* display: grid;
+  grid-template-columns: 200px 500px; */
+  /* grid-taemplate-columns: 1fr 1fr 1fr;
+  grid-gap: 20px; */
+  /* border: mediumaquamarine solid; */
+}
 
 
 /* ul.a {
@@ -111,7 +224,7 @@ body {
 
 
 nav {
-  background-color:rgb(158, 108, 116);
+  background-color: rgb(172, 145, 26);
   padding: 0 15px;
   margin-top: 0;
 }

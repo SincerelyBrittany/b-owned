@@ -36,6 +36,11 @@ class ApplicationController < ActionController::Base
       redirect_to companies_path if current_user.admin == false
     end
 
+    def authorize_owner(company)
+      authenticate
+      redirect_to companies_path if company.user == false || company.admin == false
+    end
+
     
     def authorize(list)
       authenticate

@@ -1,3 +1,4 @@
+<div class="full">
 <%= form_with scope: :comment, url: company_comment_path(@comment.company, @comment), method: :patch do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -16,7 +17,7 @@
     <%= f.hidden_field :company_id %>
   </div>
   <div class="actions">
-    <%= f.submit "edit comment" %>
+    <%= f.submit "edit comment", :class => "myButton" %>
   </div>
 <% end %>
 
@@ -26,4 +27,7 @@
 
 
     <%= button_to "delete", {:controller => :comments,
-      :action => 'destroy', :company_id => @comment.company_id, :user_id => @comment.user_id }, :method => :delete, :class => 'list_btn' %>
+      :action => 'destroy', :company_id => @comment.company_id, :user_id => @comment.user_id }, :method => :delete, :class => 'myButton' %>
+
+      </div>
+      

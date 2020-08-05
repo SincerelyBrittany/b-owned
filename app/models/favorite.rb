@@ -4,4 +4,6 @@ class Favorite < ApplicationRecord
 
     validates_uniqueness_of :user_id, :scope => :company_id
 
+   
+
 end
