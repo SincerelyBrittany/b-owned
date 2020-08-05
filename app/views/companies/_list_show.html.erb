@@ -2,19 +2,19 @@
 <div class="grid">
   <div class="left-half">
 <%if @company.comments.count == 0 %>
-<h3> No comments for <%= @company.title%> yet! Be the first to comment below</h3>
+  <h3> No comments for <%= @company.title%> yet! Be the first to comment below</h3>
 <%else%>
-<h3>Comments count: <%= @company.comments.count %></h3> 
+  <h3>Comments count: <%= @company.comments.count %></h3> 
 <%end%>
 </div>
 
 <%# Displays company favorite count %>
 <div class="right-half">
 <%if @company.favorites.count == 0 %>
-<h3> No one follows <%= @company.title%> yet!</h3>
+  <h3> No one follows <%= @company.title%> yet!</h3>
 <%# <h3 class="center"> Be the first to follow ⬇ </h3> %>
 <%else%>
-<h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
+  <h3>Favorites count: <%= link_to @company.favorites.count, company_favorites_path(@company) %></h3>
 <%end%>
 </div>
 </div>

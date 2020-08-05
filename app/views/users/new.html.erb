@@ -2,15 +2,23 @@
 
 <%= render 'form' %>
 
-<%# form_with model: @user, local: true do |f| %>
-<%# f.text_field :username, placeholder: "username" %>
-<%# f.text_field :email, placeholder: "email" %>
-<%# f.password_field :password, placeholder: "password" %>
-<%# f.submit %>
-<%# end %>
+<div class="full">
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.text_field :username, placeholder: "username" %>
+  <%= f.text_field :email, placeholder: "email" %>
+  <%= f.password_field :password, placeholder: "password" %>
+  <%# f.check_box_tag "owner", placeholder: "owner?" %>
+   <div class="field">
+        <%= f.label "Are you a owner?" %> <br />
+        <%= f.check_box :owner, {}, true, false %> <br />
+    </div>
+  <%# check_box_tag "project_#{project.id}", "#{project.done}", project.done?, disabled: "#{project.done?}" %>
+  <%= f.submit %>
+<% end %>
 
-<%# if @user.errors.any? %>
-    <%# @user.errors.full_messages.each do |msg| %>
-    <p><%# msg %></p>
-    <%# end %>
-<%# end %>
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+    <% end %>
+<% end %>
+</div>
