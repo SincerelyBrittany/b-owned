@@ -44,7 +44,15 @@ class User < ApplicationRecord
 
     def favorited?(company)
       favorite = Favorite.find_by(user_id: self.id, company_id: company.id)
+    end 
 
+    def self.find_or_create_by_omniauth(auth_hash) #returns the instance of the user
+      oauth_email = auth_hash["info"]["email"]
+      self.where(email: oauth_email).first_or_create do |user|
+        # byebug
+          user.username = auth_hash["info"]["name"] 
+          user.password = SecureRandom.hex
+      end
     end 
     # def user_name=(name)
     #     self.user = User.find_or_create_by(name: name)
