@@ -13,7 +13,7 @@
   <body>
  <header>
   <% flash.each do |k,v| %>
-    <%= v %>
+       <p class="alert"> <%= v %> </p>
     <% end %>
        <%= current_user_logged_in %>
   </header>
