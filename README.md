@@ -10,34 +10,28 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
+<div align="center">
   <a href="https://github.com/SincerelyBrittany/b-owned">
-    <img src="https://github.com/SincerelyBrittany/b-owned/blob/master/app/assets/images/main_page.png" alt="Logo" width="300" height="80">
+    <img src="" alt="Logo" width="300" height="80">
   </a>
-
+</div>
   <h3 align="center">B. Owned</h3>
 
-  <p align="center">
-
-    This rails application allows for individuals to search for black owned businesses. 
-
-    There is two ways to sign in:
+<div align="center">
+    <p>This rails application allows for individuals to search for black owned businesses. </p>
+   <p> There is two ways to sign in:
     1. As a business owner where you will be able to add companies that you own. 
-    2. As a user who will be able to search for companies. 
-
-    All users and owners have the ability to create personalized list that they can add muiltple companies too. In addition, a user/owner is able to follow/favorite companies of their liking. All users can delete/edit their listat any time. 
-   
-    Lastly, it allows an administrator to CRUD all functions in the app. 
-
+    2. As a user who will be able to search for companies. </p>
+    <p>All users and owners have the ability to create personalized list that they can add muiltple companies too. In addition, a user/owner is able to follow/favorite companies of their liking. All users can delete/edit their list at any time. </p>
+    <p> Lastly, it allows an administrator to CRUD all functions in the app. </p>
+    </div>
     <br />
+    <div align="center">
     <a href="">View Demo</a>
     ·
     <a href="https://github.com/SincerelyBrittany/b-owned/issues">Report Bug</a>
     ·
-    <a href="https://github.com/SincerelyBrittany/b-owned/issues">Request Feature</a>
-  </p>
-</p>
-
+    <a href="https://github.com/SincerelyBrittany/b-owned/issues">Request Feature</a></div>
 
 
 <!-- TABLE OF CONTENTS -->
@@ -176,4 +170,4 @@ Connect/Follow me:
 [twitter-url]: https://twitter.com/SincerelyBrittt
 [dev-to-url]: https://dev.to/sincerelybrittany
 [dev-to-shield]:https://img.shields.io/badge/-Dev.to-black.svg?style=flat-square&logo=dev.to&colorB=555
-[product-screenshot]: public/readme_media/main_page.png
+[product-screenshot]: https://github.com/SincerelyBrittany/b-owned/blob/master/app/assets/images/main_page.png
