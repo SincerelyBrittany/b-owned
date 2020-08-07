@@ -12,13 +12,23 @@
 <br />
 <p align="center">
   <a href="https://github.com/SincerelyBrittany/b-owned">
-    <img src="public/readme_media/logo.png" alt="Logo" width="300" height="80">
+    <img src="https://github.com/SincerelyBrittany/b-owned/blob/master/app/assets/images/main_page.png" alt="Logo" width="300" height="80">
   </a>
 
   <h3 align="center">B. Owned</h3>
 
   <p align="center">
-    A rails application that allows black owned companies to add their companies and users to follow and find black own companies neear them. The application allows you to create a list with your some of your favorite companies. In addition, a user can even follow a company. Company owners can have the same abilities plus they can add as many companies as they like. Lastly, it allows an administrator to CRUD all functions in the app. 
+
+    This rails application allows for individuals to search for black owned businesses. 
+
+    There is two ways to sign in:
+    1. As a business owner where you will be able to add companies that you own. 
+    2. As a user who will be able to search for companies. 
+
+    All users and owners have the ability to create personalized list that they can add muiltple companies too. In addition, a user/owner is able to follow/favorite companies of their liking. All users can delete/edit their listat any time. 
+   
+    Lastly, it allows an administrator to CRUD all functions in the app. 
+
     <br />
     <a href="">View Demo</a>
     ·
