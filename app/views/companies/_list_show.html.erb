@@ -67,7 +67,7 @@
 <% else %>
   <h4 class="center"> Comments: </h4>
   <div class="comment-grid">
-  <% @company.comments.each do |comment| %>       
+  <% @company.comments.recent(5).each do |comment| %>       
           <div><%= link_to comment.user.username, user_path(comment.user) %> 
             <br> <%= comment.last_updated %> </div>
           <div> <%= comment.content %>

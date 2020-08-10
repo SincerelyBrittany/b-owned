@@ -10,6 +10,10 @@ class Comment < ApplicationRecord
         self.user = User.find_or_create_by(username: user_attributes[:username]) unless user_attributes[:username].blank?
     end
 
+
+    scope :recent, ->(num) { order('created_at DESC').limit(num) }
+   
+
     def last_updated
         updated_at.strftime("Posted %m/%d/%Y")
     end
