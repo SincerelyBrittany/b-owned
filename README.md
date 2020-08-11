@@ -27,7 +27,7 @@
     </div>
     <br />
     <div align="center">
-    <a href="">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=l1rQYSUjRu8">View Demo</a>
     ·
     <a href="https://github.com/SincerelyBrittany/b-owned/issues">Report Bug</a>
     ·
@@ -113,7 +113,7 @@ bundle install
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<a href="">View Demo</a> on ways to use the application.
+<a href="https://www.youtube.com/watch?v=l1rQYSUjRu8">View Demo</a> on ways to use the application.
 
 <!-- ROADMAP -->
 ## Roadmap
