@@ -14,8 +14,10 @@
 <ol class="list_ul">
 <% @list.companies.each do |company| %>
     <li><p class="list_name move"> <%= link_to company.title, company %> </p>
+    <% if @list.user == current_user %>
     <%= button_to "delete", {:controller => :company_lists,
       :action => 'destroy', :company_id => company.id, :current_list => @list.id }, :method => :delete, :class => 'myButton' %>
+      <% end %>
     </li>
 <% end %>
 </ol>
