@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/SincerelyBrittany/b-owned">
-    <img src="" alt="Logo" width="300" height="80">
+    <img src="https://github.com/SincerelyBrittany/b-owned/blob/master/app/assets/images/logo.png" alt="Logo" width="300" height="80">
   </a>
 </div>
   <h3 align="center">B. Owned</h3>
@@ -171,3 +171,4 @@ Connect/Follow me:
 [dev-to-url]: https://dev.to/sincerelybrittany
 [dev-to-shield]:https://img.shields.io/badge/-Dev.to-black.svg?style=flat-square&logo=dev.to&colorB=555
 [product-screenshot]: https://github.com/SincerelyBrittany/b-owned/blob/master/app/assets/images/main_page.png
+[logo-screenshot]: https://github.com/SincerelyBrittany/b-owned/blob/master/app/assets/images/logo.png
