@@ -21,11 +21,6 @@
   </div>
 <% end %>
 
- <%# link_to "edit", edit_company_comment_path(@company.id, comment.id)%>
-       <%# link_to "Edit Post", edit_author_post_path(@post.author, @post) if @post.author %>
-<%# link_to "delete", companies_path, edit_company_comment_path(@comment) %> 
-
-
     <%= button_to "delete", {:controller => :comments,
       :action => 'destroy', :company_id => @comment.company_id, :user_id => @comment.user_id }, :method => :delete, :class => 'myButton' %>
 
