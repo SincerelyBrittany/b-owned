@@ -83,7 +83,6 @@
 <br><br>
 <div class="center">
 <%= form_for @company.comments.build do |f| %>
-
   <%= f.hidden_field :company_id %>
   <p>
   </p>  
@@ -99,7 +98,7 @@
 
 <br><br>
 
-<% if current_user.owner == true || current_user.admin == true %>
+<% if current_user.owner == true && current_user == @company.user || current_user.admin == true %>
 <%= link_to 'Rename', edit_company_path(@company), :class => "myButton"  %>
  <%= button_to "delete", {:controller => :companies,
       :action => 'destroy', :company_id => @company.id}, :method => :delete, :class => 'myButton' %>
