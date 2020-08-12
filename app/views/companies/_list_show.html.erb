@@ -1,11 +1,10 @@
 <%# Displays company comment count %>
-<div class="full">
 <div class="grid">
   <div class="left-half">
 <%if @company.comments.count == 0 %>
   <h3> No comments for <%= @company.title%> yet! Be the first to comment below</h3>
 <%else%>
-  <h3>Comments count: <%= @company.comments.count %></h3> 
+  <h3>Comments count: <%= link_to @company.comments.count, company_comments_path(@company) %></h3> 
 <%end%>
 </div>
 
@@ -106,4 +105,3 @@
 
 
 <% end %>
-</div>
