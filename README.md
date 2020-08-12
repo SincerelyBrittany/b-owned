@@ -1,7 +1,4 @@
 # README
-⌘K V
-⇧⌘V
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -60,9 +57,7 @@ This project allows a business owner to create a company and add its location wh
 * [Ruby-on-Rails](https://guides.rubyonrails.org/)
 * [byebug](https://rubygems.org/gems/byebug/versions/9.0.6)
 * [Google_Maps_API](https://developers.google.com/maps/documentation)
-* <span style='font-size:100px;'>&#128546;</span>
-* <span style='font-size:100px;'>&#128546;</span>
-💦
+*  Blood 💉, Sweat 💦, and Tears <span style='font-size:100px;'>&#128546;</span> 
 
 
 <!-- GETTING STARTED -->
