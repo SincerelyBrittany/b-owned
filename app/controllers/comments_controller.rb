@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user, only: [:create]
+  before_action :authenticate_user, only: [:create, :index]
   before_action :set_comment, only: [:update, :edit, :destroy]
+
+   def index
+      @company = Company.find(params[:company_id])
+  end
   
   def create
     @comment = Comment.new(comment_params)
