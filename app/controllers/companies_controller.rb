@@ -60,8 +60,6 @@ class CompaniesController < ApplicationController
       end
     end
   
-
-  
       def destroy
         unless current_user.admin? || current_user.owner?
           redirect_to companies_path
