@@ -16,7 +16,7 @@
 <p>Website: <a href="<%= @company.website %>"> <%= @company.website %></a></p>
 
 <%# Displays company website %>
-<p>Phone: <%= @company.phone %></p>
+<p>Phone: <%= number_to_phone(@company.phone) %></p>
 
 <br>
 
