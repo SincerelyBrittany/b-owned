@@ -34,13 +34,7 @@ class User < ApplicationRecord
     has_many :companies, through: :comments
     has_many :favorites
     has_many :lists
-    #has_many :companies,-> { where('owner == true') } || {where('admin == true')}
-   
-    has_many :companies#,-> { where('owner == true OR admin == true') }
-    #accepts_nested_attributes_for :lists
-    # def user_name
-    #     self.user.name
-    # end
+    has_many :companies
 
     def favorited?(company)
       favorite = Favorite.find_by(user_id: self.id, company_id: company.id)
@@ -74,5 +68,4 @@ class User < ApplicationRecord
     def comment_count
       self.comments.size
     end
-    # has_many :companies, through: :comments
 end

@@ -6,6 +6,11 @@ class Company < ApplicationRecord
     validates :website, uniqueness: true
     # validates :location, uniqueness: true
 
+    def phone=(num)
+      num.gsub!(/\D/, '') if num.is_a?(String)
+      self[:phone] = num.to_i
+    end
+
     #Users Section
     #  belongs_to :user
     belongs_to :user,-> { where('owner == true OR admin == true') }
@@ -23,6 +28,9 @@ class Company < ApplicationRecord
     #Favorites Section
     has_many :favorites, dependent: :destroy
     has_many :users, through: :favorites
+
+
+    scope :abc, -> {order(:title)}
 
     def favorite_count
         self.favorites.size
