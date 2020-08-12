@@ -1,0 +1,13 @@
+<div class="full">
+    <h1> All comments for <%= @company.title %> </h1>
+      <div class="grid">
+        <% @company.comments.each do |comment| %><br>
+            <div class="left-half">
+            <h3> <%= link_to comment.user.username, user_path(comment.user) %> </h3>
+            </div>
+            <div class="right-half">
+            <h3> <%= comment.content%> </h3>
+            </div>
+        <% end %>
+    </div>
+</div>

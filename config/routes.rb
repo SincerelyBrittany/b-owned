@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :companies do 
     resources :favorites, only: [:index, :create]
-    resources :comments, only: [:edit, :update, :destroy]
+    resources :comments, only: [:index,:edit, :update, :destroy]
   end   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
