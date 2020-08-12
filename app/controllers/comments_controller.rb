@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :edit, :destroy]
   
   def create
-    @comment = Comment.new(comment_params)
-    @comment.user = current_user
+    @comment = current_user.comments.build(comment_params)
+    # @comment.user = current_user
     if @comment.save
      redirect_to @comment.company
     else 
