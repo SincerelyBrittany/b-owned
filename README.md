@@ -106,6 +106,8 @@ bundle install
 4. Created a ``.env`` file, add the file to your gitignore, and enter your API KEYS:
 ```JS
   GOOGLE_KEY = "KEY_HERE"
+  GOOGLE_CLIENT_ID = "ID_HERE"
+  GOOGLE_CLIENT_SECRET = "SECRET_HERE"
 ```
 <!-- USAGE EXAMPLES -->
 ## Usage
