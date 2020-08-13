@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     end
     
     def authenticate
-      redirect_to login_path if !logged_in?
+      redirect_to login_path, alert: "Please Log in or Sign up" if !logged_in?
     end
     
     def authorize_user(u)

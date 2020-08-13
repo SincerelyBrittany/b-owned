@@ -5,12 +5,31 @@
 
 <br>
 <div class="full">
+
+
+<% if false %>
+
 <%= form_tag companies_path, method: :get do %>
   <p>
-    <%= text_field_tag :query, params[:query] %>
+    <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name"), {:include_blank => 'Search By Category'} %>
     <%= submit_tag "Search", name: nil, :class => "myButton" %>
   </p>
 <% end %>
+<br>
+<% end %>
+
+
+<%= form_tag companies_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query], placeholder: "Search By Name" %>
+    <%= submit_tag "Search", name: nil, :class => "myButton" %>
+  </p>
+<% end %>
+
+
+<b><%= link_to "Search by Category", categories_path%></b>
+
+
 
 
 

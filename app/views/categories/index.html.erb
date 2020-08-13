@@ -1,0 +1,44 @@
+<% if false %>
+<%= form_tag categories_path, method: :get do %>
+  <p>
+    <%= text_field_tag :querysearch, params[:querysearch] %>
+    <%= submit_tag "Search", name: nil, :class => "myButton" %>
+  </p>
+<% end %>
+
+<%= form_tag companies_path, method: :get do %>
+  <p>
+    <%# text_field_tag :query, params[:query] %>
+    <%# select("category", "name", @categories.all.collect(&:name)) %>
+    <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name"), {:include_blank => 'Search By Category'} %>
+    <%= submit_tag "Search", name: nil, :class => "myButton" %>
+  </p>
+<% end %>
+
+<% end %>
+<br>
+
+<h1> Search By Category </h1>
+<div class="full">
+<%= form_tag categories_path, method: :get do %>
+  <p>
+    <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name"), {:include_blank => 'All Categories'} %>
+    <%= submit_tag "Search", name: nil, :class => "myButton" %>
+  </p>
+
+<% end %>
+<br>
+
+<% if @companies %>
+<% @companies.each do |company| %>
+  <p><%= link_to company.title, company %></p>
+<% end %>
+
+<% else %>
+<% @categories.each do |category| %>
+  <p><%= link_to category.name, category %></p>
+<% end %>
+
+<%end %>
+
+</div>

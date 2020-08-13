@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root :to => "companies#index"
+  root :to => "companies#home"
+  #root to: 'pages#home'
   
   get "/signup" => "users#new", as: "signup"
   get "/login" => "sessions#new", as: "login"
@@ -8,7 +9,8 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
 
-  
+  resources :categories, only: [:show, :index]
+
   resources :users
   resources :companies
   resources :comments, only: [:create, :new]

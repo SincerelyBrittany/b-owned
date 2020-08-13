@@ -1,0 +1,7 @@
+<h1> <%= @category.name %> </h1>
+<br>
+<%= @category.desc %>
+<br>
+<% @category.companies.each do |company| %>
+    <%= company.title %>
+<% end %>

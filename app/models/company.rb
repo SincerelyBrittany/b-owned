@@ -31,6 +31,8 @@ class Company < ApplicationRecord
 
 
     scope :abc, -> {order(:title)}
+    #Categories section
+    belongs_to :category
 
     def favorite_count
         self.favorites.size
