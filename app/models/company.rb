@@ -1,9 +1,9 @@
 class Company < ApplicationRecord
     #Validations Section
-    validates :title, uniqueness: true
-    validates :phone, uniqueness: true
-    validates :email, uniqueness: true
-    validates :website, uniqueness: true
+    validates :title, uniqueness: true, presence: true
+    validates :phone, uniqueness: true, presence: true
+    validates :email, uniqueness: true, presence: true
+    validates :website, uniqueness: true, presence: true
     # validates :location, uniqueness: true
 
     def phone=(num)
@@ -12,7 +12,6 @@ class Company < ApplicationRecord
     end
 
     #Users Section
-    #  belongs_to :user
     belongs_to :user,-> { where('owner == true OR admin == true') }
 
     #Comments Section
