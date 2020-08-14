@@ -24,6 +24,7 @@
     </div>
     <br />
     <div align="center">
+    <a href="https://b-owned.herokuapp.com/login">View Example</a>
     <a href="https://www.youtube.com/watch?v=l1rQYSUjRu8">View Demo</a>
     ·
     <a href="https://github.com/SincerelyBrittany/b-owned/issues">Report Bug</a>
