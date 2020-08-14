@@ -17,9 +17,8 @@
 
 <% end %>
 <br>
-
 <h1> Search By Category </h1>
-<div class="full">
+<%# <div class="full"> %>
 <%= form_tag categories_path, method: :get do %>
   <p>
     <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name"), {:include_blank => 'All Categories'} %>
@@ -41,4 +40,4 @@
 
 <%end %>
 
-</div>
+<%# </div> %>
