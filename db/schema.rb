@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_08_07_134853) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "desc"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_08_07_134853) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id"
-    t.integer "company_id"
+    t.bigint "user_id"
+    t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_comments_on_company_id"
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 2020_08_07_134853) do
   end
 
   create_table "company_lists", force: :cascade do |t|
-    t.integer "list_id"
-    t.integer "company_id"
+    t.bigint "list_id"
+    t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_company_lists_on_company_id"
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 2020_08_07_134853) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
+    t.bigint "user_id"
+    t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_favorites_on_company_id"
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_134853) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
@@ -76,11 +79,6 @@ ActiveRecord::Schema.define(version: 2020_08_07_134853) do
     t.string "password_digest"
     t.boolean "admin", default: false
     t.boolean "owner", default: false
-    t.string "encrypted_password", limit: 128
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
 end
