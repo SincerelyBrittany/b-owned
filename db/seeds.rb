@@ -25,7 +25,7 @@
 #c2.favorites
 
 
-u1 = User.create(username: "admin", email: "admin@gmail.com", password: "admin", admin: true)
+u1 = User.create(username: "noneadmin", email: "noneadmin@gmail.com", password: "noneadmin", admin: true)
 u2 = User.create(username: "owner", email: "owner@gmail.com", password: "owner", owner: true)
 u3 = User.create(username: "user", email: "user@gmail.com", password: "user")
 c1 = Company.create(title: "First Company", description: "This is the first company", phone: "983-495-9384", website: "https://www.google.com/", email: "firstcompany@gmail.com", location: "franklin,nj", user_id: 2)
